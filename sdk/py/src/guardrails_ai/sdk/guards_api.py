@@ -1,4 +1,4 @@
-from typing import Any, Unpack, overload
+from typing import Any, Optional, Unpack, overload
 from httpx import AsyncClient
 from guardrails_ai.sdk.types import Guard, ValidationOutcome
 from guardrails_ai.sdk.methods import get_guard, post_guard_validate
@@ -7,6 +7,7 @@ from openai import AsyncClient as AsyncOpenAIClient, AsyncStream
 from openai.types.completion_create_params import (
     CompletionCreateParamsStreaming,
     CompletionCreateParamsNonStreaming,
+    CompletionCreateParamsBase,
 )
 from openai.types.chat import ChatCompletion, ChatCompletionChunk
 from tenacity import (
@@ -41,14 +42,18 @@ class CompletionsApi(Client):
         self, guard_name: str, **kwargs: Unpack[CompletionCreateParamsNonStreaming]
     ) -> ChatCompletion: ...
     async def create(
-        self, guard_name: str, **kwargs: Unpack[CompletionCreateParamsNonStreaming]
+        self,
+        guard_name: str,
+        *,
+        stream: Optional[bool] = False,
+        **kwargs: Unpack[CompletionCreateParamsBase],
     ) -> ChatCompletion | AsyncStream[ChatCompletionChunk]:
         openai_client = AsyncOpenAIClient(
             base_url=f"{self.http_client.base_url}/guards/{guard_name}/openai/v1",
             http_client=self.http_client,
             max_retries=self.max_retries,
         )
-        return await openai_client.chat.completions.create(**kwargs)
+        return await openai_client.chat.completions.create(stream=stream, **kwargs)  # type: ignore
 
 
 class ChatApi(Client):

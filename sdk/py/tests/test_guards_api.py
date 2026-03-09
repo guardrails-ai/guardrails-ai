@@ -133,6 +133,7 @@ class TestCompletionsApiCreate(unittest.IsolatedAsyncioTestCase):
             )
 
         mock_openai_instance.chat.completions.create.assert_called_once_with(
+            stream=False,
             model="gpt-4",
             messages=[{"role": "user", "content": "hello"}],
             temperature=0.5,
