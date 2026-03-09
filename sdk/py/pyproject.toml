@@ -1,7 +1,7 @@
 
 [project]
 name = "guardrails-ai-sdk"
-version = "0.5.0"
+version = "0.3.0"
 authors = [
     {name = "Guardrails AI", email = "contact@guardrailsai.com"}
 ]
