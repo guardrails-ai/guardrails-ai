@@ -1,0 +1,76 @@
+name: Publish Python SDK
+
+permissions:
+  id-token: write
+  contents: write
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - sdk/py/**
+    branches:
+      - main
+
+jobs:
+  publish_version_tag_to_github:
+    name: Publish Version Tag to Github
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./sdk/py
+    outputs:
+      version_tag: ${{ steps.version.outputs.version_tag }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+        with:
+          fetch-tags: true
+          fetch-depth: 0
+
+      - name: Check for version bump
+        id: version
+        continue-on-error: false
+        shell: bash {0}
+        run: |
+          PYPROJECT_TOML="pyproject.toml"
+
+          # Extract the version using grep and sed
+          version=$(grep -m 1 "version" "$PYPROJECT_TOML" | sed -E 's/.*version[[:space:]]*=[[:space:]]*"([^"]*)".*/\1/')
+
+          echo "Project version: $version"
+
+          if [ -z "$version" ]
+          then
+            echo "Version is missing from pyproject.toml!"
+            exit 1
+          fi
+
+          version_tag="py-$version"
+
+          echo "Checking if $version_tag already exists..."
+          version_commit="$(git rev-parse "$version_tag" 2>/dev/null)"
+          if [ ! -z "$version_commit" ] && [ "$version_commit" != "$version_tag" ];
+          then
+              echo "Version $version_tag already exist on commit $version_commit!"
+              echo "Abandoning build..."
+              echo "To complete this release update the version field in the pyproject.toml with an appropriate semantic version."
+              exit 1
+          else
+            echo "version_tag=$version_tag" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+      - name: Tag
+        id: tag
+        continue-on-error: false
+        run: |
+          version_tag="${{ steps.version.outputs.version_tag }}"
+          echo "Configuring github bot"
+          git config user.name "github-actions[bot]"
+          # Comes from https://api.github.com/users/github-actions%5Bbot%5D
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          echo "Creating github tag: $version_tag"
+          git tag "$version_tag"
+          echo "Pushing tags"
+          git push --tags
