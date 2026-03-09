@@ -3,8 +3,8 @@ Test and example usage of JSON Schema Draft 2020-12 Pydantic models.
 """
 
 import json
+import unittest
 
-import pytest
 from pydantic import ValidationError
 
 from guardrails_ai.sdk.types.json_schema_2020_12 import (
@@ -24,7 +24,7 @@ from guardrails_ai.sdk.types.json_schema_2020_12 import (
 )
 
 
-class TestBasicSchemas:
+class TestBasicSchemas(unittest.TestCase):
     """Test basic schema creation and validation."""
 
     def test_boolean_schemas(self):
@@ -32,13 +32,13 @@ class TestBasicSchemas:
         always_valid = create_boolean_schema(True)
         never_valid = create_boolean_schema(False)
 
-        assert always_valid is True
-        assert never_valid is False
+        self.assertIs(always_valid, True)
+        self.assertIs(never_valid, False)
 
     def test_empty_schema(self):
         """Test empty schema (equivalent to true)."""
         schema = JSONSchema()
-        assert schema.model_dump(exclude_none=True, by_alias=True) == {}
+        self.assertEqual(schema.model_dump(exclude_none=True, by_alias=True), {})
 
     def test_string_schema(self):
         """Test string schema with various constraints."""
@@ -51,11 +51,11 @@ class TestBasicSchemas:
             description="User's email address",
         )
 
-        assert schema.type == "string"
-        assert schema.min_length == 1
-        assert schema.max_length == 100
-        assert schema.pattern == r"^[a-zA-Z]+$"
-        assert schema.format == "email"
+        self.assertEqual(schema.type, "string")
+        self.assertEqual(schema.min_length, 1)
+        self.assertEqual(schema.max_length, 100)
+        self.assertEqual(schema.pattern, r"^[a-zA-Z]+$")
+        self.assertEqual(schema.format, "email")
 
     def test_number_schema(self):
         """Test number and integer schemas."""
@@ -63,16 +63,16 @@ class TestBasicSchemas:
             minimum=0, maximum=100, multiple_of=5, is_integer=True
         )
 
-        assert int_schema.type == "integer"
-        assert int_schema.minimum == 0
-        assert int_schema.maximum == 100
-        assert int_schema.multiple_of == 5
+        self.assertEqual(int_schema.type, "integer")
+        self.assertEqual(int_schema.minimum, 0)
+        self.assertEqual(int_schema.maximum, 100)
+        self.assertEqual(int_schema.multiple_of, 5)
 
         float_schema = number_schema(exclusive_minimum=0.0, exclusive_maximum=1.0)
 
-        assert float_schema.type == "number"
-        assert float_schema.exclusive_minimum == 0.0
-        assert float_schema.exclusive_maximum == 1.0
+        self.assertEqual(float_schema.type, "number")
+        self.assertEqual(float_schema.exclusive_minimum, 0.0)
+        self.assertEqual(float_schema.exclusive_maximum, 1.0)
 
     def test_array_schema(self):
         """Test array schema with item constraints."""
@@ -80,11 +80,11 @@ class TestBasicSchemas:
             items={"type": "string"}, min_items=1, max_items=10, unique_items=True
         )
 
-        assert schema.type == "array"
-        assert schema.items == {"type": "string"}
-        assert schema.min_items == 1
-        assert schema.max_items == 10
-        assert schema.unique_items is True
+        self.assertEqual(schema.type, "array")
+        self.assertEqual(schema.items.model_dump(exclude_none=True), {"type": "string"})
+        self.assertEqual(schema.min_items, 1)
+        self.assertEqual(schema.max_items, 10)
+        self.assertIs(schema.unique_items, True)
 
     def test_object_schema(self):
         """Test object schema with properties and constraints."""
@@ -98,99 +98,99 @@ class TestBasicSchemas:
             additional_properties=False,
         )
 
-        assert schema.type == "object"
-        assert "name" in schema.properties
-        assert "age" in schema.properties
-        assert "email" in schema.properties
-        assert schema.required == ["name", "email"]
-        assert schema.additional_properties is False
+        self.assertEqual(schema.type, "object")
+        self.assertIn("name", schema.properties)
+        self.assertIn("age", schema.properties)
+        self.assertIn("email", schema.properties)
+        self.assertEqual(schema.required, ["name", "email"])
+        self.assertIs(schema.additional_properties, False)
 
 
-class TestValidation:
+class TestValidation(unittest.TestCase):
     """Test validation of schema constraints."""
 
     def test_type_validation(self):
         """Test type field validation."""
         # Valid single type
         schema = JSONSchema(type="string")
-        assert schema.type == "string"
+        self.assertEqual(schema.type, "string")
 
         # Valid array of types
         schema = JSONSchema(type=["string", "number"])
-        assert schema.type == ["string", "number"]
+        self.assertEqual(schema.type, ["string", "number"])
 
         # Invalid type
-        with pytest.raises(ValidationError):
+        with self.assertRaises(ValidationError):
             JSONSchema(type="invalid")
 
         # Invalid type in array
-        with pytest.raises(ValidationError):
+        with self.assertRaises(ValidationError):
             JSONSchema(type=["string", "invalid"])
 
         # Duplicate types
-        with pytest.raises(ValidationError):
+        with self.assertRaises(ValidationError):
             JSONSchema(type=["string", "string"])
 
     def test_length_constraints(self):
         """Test min/max length validation."""
         # Valid
         schema = JSONSchema(min_length=1, max_length=10)
-        assert schema.min_length == 1
+        self.assertEqual(schema.min_length, 1)
 
         # Invalid: min > max
-        with pytest.raises(ValidationError):
+        with self.assertRaises(ValidationError):
             JSONSchema(min_length=10, max_length=1)
 
     def test_items_constraints(self):
         """Test min/max items validation."""
         # Valid
         schema = JSONSchema(min_items=1, max_items=10)
-        assert schema.min_items == 1
+        self.assertEqual(schema.min_items, 1)
 
         # Invalid: min > max
-        with pytest.raises(ValidationError):
+        with self.assertRaises(ValidationError):
             JSONSchema(min_items=10, max_items=1)
 
     def test_properties_constraints(self):
         """Test min/max properties validation."""
         # Valid
         schema = JSONSchema(min_properties=1, max_properties=10)
-        assert schema.min_properties == 1
+        self.assertEqual(schema.min_properties, 1)
 
         # Invalid: min > max
-        with pytest.raises(ValidationError):
+        with self.assertRaises(ValidationError):
             JSONSchema(min_properties=10, max_properties=1)
 
     def test_numeric_constraints(self):
         """Test numeric constraint validation."""
         # Valid
         schema = JSONSchema(minimum=0, maximum=100)
-        assert schema.minimum == 0
+        self.assertEqual(schema.minimum, 0)
 
         # Invalid: min > max
-        with pytest.raises(ValidationError):
+        with self.assertRaises(ValidationError):
             JSONSchema(minimum=100, maximum=0)
 
         # Valid exclusive
         schema = JSONSchema(exclusive_minimum=0, exclusive_maximum=100)
-        assert schema.exclusive_minimum == 0
+        self.assertEqual(schema.exclusive_minimum, 0)
 
         # Invalid exclusive: min >= max
-        with pytest.raises(ValidationError):
+        with self.assertRaises(ValidationError):
             JSONSchema(exclusive_minimum=100, exclusive_maximum=100)
 
     def test_contains_constraints(self):
         """Test contains with minContains and maxContains."""
         # Valid
         schema = JSONSchema(contains={"type": "string"}, min_contains=1, max_contains=5)
-        assert schema.min_contains == 1
+        self.assertEqual(schema.min_contains, 1)
 
         # Invalid: minContains without contains
-        with pytest.raises(ValidationError):
+        with self.assertRaises(ValidationError):
             JSONSchema(min_contains=1)
 
         # Invalid: minContains > maxContains
-        with pytest.raises(ValidationError):
+        with self.assertRaises(ValidationError):
             JSONSchema(contains={"type": "string"}, min_contains=5, max_contains=1)
 
     def test_conditional_constraints(self):
@@ -199,14 +199,14 @@ class TestValidation:
         schema = JSONSchema(
             if_={"type": "string"}, then={"minLength": 5}, else_={"minLength": 10}
         )
-        assert schema.if_ is not None
+        self.assertIsNotNone(schema.if_)
 
         # Invalid: then without if
-        with pytest.raises(ValidationError):
+        with self.assertRaises(ValidationError):
             JSONSchema(then={"minLength": 5})
 
 
-class TestCoreVocabulary:
+class TestCoreVocabulary(unittest.TestCase):
     """Test core vocabulary keywords."""
 
     def test_schema_and_id(self):
@@ -217,15 +217,17 @@ class TestCoreVocabulary:
         )
 
         data = schema.model_dump(by_alias=True, exclude_none=True)
-        assert data["$schema"] == "https://json-schema.org/draft/2020-12/schema"
-        assert data["$id"] == "https://example.com/schemas/person.json"
+        self.assertEqual(
+            data["$schema"], "https://json-schema.org/draft/2020-12/schema"
+        )
+        self.assertEqual(data["$id"], "https://example.com/schemas/person.json")
 
     def test_ref(self):
         """Test $ref keyword."""
         schema = ref_schema("#/$defs/address")
 
         data = schema.model_dump(by_alias=True, exclude_none=True)
-        assert data["$ref"] == "#/$defs/address"
+        self.assertEqual(data["$ref"], "#/$defs/address")
 
     def test_defs(self):
         """Test $defs keyword."""
@@ -240,8 +242,8 @@ class TestCoreVocabulary:
         )
 
         data = schema.model_dump(by_alias=True, exclude_none=True)
-        assert "$defs" in data
-        assert "address" in data["$defs"]
+        self.assertIn("$defs", data)
+        self.assertIn("address", data["$defs"])
 
     def test_anchor_and_dynamic_anchor(self):
         """Test $anchor and $dynamicAnchor keywords."""
@@ -250,8 +252,8 @@ class TestCoreVocabulary:
         )
 
         data = schema.model_dump(by_alias=True, exclude_none=True)
-        assert data["$anchor"] == "myAnchor"
-        assert data["$dynamicAnchor"] == "dynamicAnchor"
+        self.assertEqual(data["$anchor"], "myAnchor")
+        self.assertEqual(data["$dynamicAnchor"], "dynamicAnchor")
 
     def test_comment(self):
         """Test $comment keyword."""
@@ -260,7 +262,7 @@ class TestCoreVocabulary:
         )
 
         data = schema.model_dump(by_alias=True, exclude_none=True)
-        assert data["$comment"] == "This is a comment for schema authors"
+        self.assertEqual(data["$comment"], "This is a comment for schema authors")
 
     def test_vocabulary(self):
         """Test $vocabulary keyword."""
@@ -274,11 +276,11 @@ class TestCoreVocabulary:
         )
 
         data = schema.model_dump(by_alias=True, exclude_none=True)
-        assert "$vocabulary" in data
-        assert len(data["$vocabulary"]) == 4
+        self.assertIn("$vocabulary", data)
+        self.assertEqual(len(data["$vocabulary"]), 4)
 
 
-class TestApplicatorVocabulary:
+class TestApplicatorVocabulary(unittest.TestCase):
     """Test applicator vocabulary keywords."""
 
     def test_properties_and_pattern_properties(self):
@@ -291,8 +293,8 @@ class TestApplicatorVocabulary:
             },
         )
 
-        assert "name" in schema.properties
-        assert len(schema.pattern_properties) == 2
+        self.assertIn("name", schema.properties)
+        self.assertEqual(len(schema.pattern_properties), 2)
 
     def test_prefix_items(self):
         """Test prefixItems for tuple validation."""
@@ -306,8 +308,8 @@ class TestApplicatorVocabulary:
             items=False,  # No additional items allowed
         )
 
-        assert len(schema.prefix_items) == 3
-        assert schema.items is False
+        self.assertEqual(len(schema.prefix_items), 3)
+        self.assertIs(schema.items, False)
 
     def test_contains(self):
         """Test contains keyword."""
@@ -315,8 +317,8 @@ class TestApplicatorVocabulary:
             contains=string_schema(pattern=r"^test"), min_contains=1, max_contains=3
         )
 
-        assert schema.contains is not None
-        assert schema.min_contains == 1
+        self.assertIsNotNone(schema.contains)
+        self.assertEqual(schema.min_contains, 1)
 
     def test_dependent_schemas(self):
         """Test dependentSchemas."""
@@ -327,25 +329,25 @@ class TestApplicatorVocabulary:
             },
         )
 
-        assert "credit_card" in schema.dependent_schemas
+        self.assertIn("credit_card", schema.dependent_schemas)
 
     def test_composition_schemas(self):
         """Test allOf, anyOf, oneOf, not."""
         # allOf
         schema = all_of_schema({"type": "string"}, {"minLength": 5})
-        assert len(schema.all_of) == 2
+        self.assertEqual(len(schema.all_of), 2)
 
         # anyOf
         schema = any_of_schema({"type": "string"}, {"type": "number"})
-        assert len(schema.any_of) == 2
+        self.assertEqual(len(schema.any_of), 2)
 
         # oneOf
         schema = one_of_schema(string_schema(), number_schema())
-        assert len(schema.one_of) == 2
+        self.assertEqual(len(schema.one_of), 2)
 
         # not
         schema = not_schema({"type": "null"})
-        assert schema.not_ is not None
+        self.assertIsNotNone(schema.not_)
 
     def test_conditional(self):
         """Test if/then/else."""
@@ -353,21 +355,21 @@ class TestApplicatorVocabulary:
             if_={"type": "string"}, then={"minLength": 5}, else_={"minimum": 0}
         )
 
-        assert schema.if_ is not None
-        assert schema.then is not None
-        assert schema.else_ is not None
+        self.assertIsNotNone(schema.if_)
+        self.assertIsNotNone(schema.then)
+        self.assertIsNotNone(schema.else_)
 
 
-class TestValidationVocabulary:
+class TestValidationVocabulary(unittest.TestCase):
     """Test validation vocabulary keywords."""
 
     def test_enum_and_const(self):
         """Test enum and const."""
         enum = enum_schema(["red", "green", "blue"])
-        assert len(enum.enum) == 3
+        self.assertEqual(len(enum.enum), 3)
 
         const = const_schema(42)
-        assert const.const == 42
+        self.assertEqual(const.const, 42)
 
     def test_dependent_required(self):
         """Test dependentRequired."""
@@ -380,10 +382,10 @@ class TestValidationVocabulary:
             dependent_required={"credit_card": ["billing_address"]},
         )
 
-        assert "credit_card" in schema.dependent_required
+        self.assertIn("credit_card", schema.dependent_required)
 
 
-class TestMetadataVocabulary:
+class TestMetadataVocabulary(unittest.TestCase):
     """Test metadata vocabulary keywords."""
 
     def test_metadata_annotations(self):
@@ -398,15 +400,15 @@ class TestMetadataVocabulary:
             examples=["alice", "bob", "charlie"],
         )
 
-        assert schema.title == "Username"
-        assert schema.description == "The user's username"
-        assert schema.default == "anonymous"
-        assert schema.deprecated is True
-        assert schema.read_only is False
-        assert len(schema.examples) == 3
+        self.assertEqual(schema.title, "Username")
+        self.assertEqual(schema.description, "The user's username")
+        self.assertEqual(schema.default, "anonymous")
+        self.assertIs(schema.deprecated, True)
+        self.assertIs(schema.read_only, False)
+        self.assertEqual(len(schema.examples), 3)
 
 
-class TestFormatVocabulary:
+class TestFormatVocabulary(unittest.TestCase):
     """Test format vocabulary."""
 
     def test_format_annotation(self):
@@ -435,10 +437,10 @@ class TestFormatVocabulary:
 
         for fmt in formats:
             schema = string_schema(format=fmt)
-            assert schema.format == fmt
+            self.assertEqual(schema.format, fmt)
 
 
-class TestContentVocabulary:
+class TestContentVocabulary(unittest.TestCase):
     """Test content vocabulary keywords."""
 
     def test_content_keywords(self):
@@ -452,12 +454,12 @@ class TestContentVocabulary:
             },
         )
 
-        assert schema.content_encoding == "base64"
-        assert schema.content_media_type == "application/json"
-        assert schema.content_schema is not None
+        self.assertEqual(schema.content_encoding, "base64")
+        self.assertEqual(schema.content_media_type, "application/json")
+        self.assertIsNotNone(schema.content_schema)
 
 
-class TestUnevaluatedVocabulary:
+class TestUnevaluatedVocabulary(unittest.TestCase):
     """Test unevaluated vocabulary keywords."""
 
     def test_unevaluated_properties(self):
@@ -466,7 +468,7 @@ class TestUnevaluatedVocabulary:
             properties={"name": string_schema()}, unevaluated_properties=False
         )
 
-        assert schema.unevaluated_properties is False
+        self.assertIs(schema.unevaluated_properties, False)
 
     def test_unevaluated_items(self):
         """Test unevaluatedItems."""
@@ -474,10 +476,10 @@ class TestUnevaluatedVocabulary:
             prefix_items=[string_schema(), number_schema()], unevaluated_items=False
         )
 
-        assert schema.unevaluated_items is False
+        self.assertIs(schema.unevaluated_items, False)
 
 
-class TestComplexExamples:
+class TestComplexExamples(unittest.TestCase):
     """Test complex real-world schema examples."""
 
     def test_person_schema(self):
@@ -517,10 +519,12 @@ class TestComplexExamples:
 
         # Convert to dict and verify structure
         data = schema.model_dump(by_alias=True, exclude_none=True)
-        assert data["$schema"] == "https://json-schema.org/draft/2020-12/schema"
-        assert data["title"] == "Person"
-        assert "firstName" in data["properties"]
-        assert "address" in data["$defs"]
+        self.assertEqual(
+            data["$schema"], "https://json-schema.org/draft/2020-12/schema"
+        )
+        self.assertEqual(data["title"], "Person")
+        self.assertIn("firstName", data["properties"])
+        self.assertIn("address", data["$defs"])
 
     def test_polymorphic_schema(self):
         """Test a schema with oneOf for polymorphism."""
@@ -544,7 +548,7 @@ class TestComplexExamples:
             ]
         )
 
-        assert len(schema.one_of) == 2
+        self.assertEqual(len(schema.one_of), 2)
 
     def test_recursive_schema(self):
         """Test a recursive schema (tree structure)."""
@@ -561,7 +565,7 @@ class TestComplexExamples:
 
         data = schema.model_dump(by_alias=True, exclude_none=True)
         # Verify the recursive reference
-        assert data["properties"]["children"]["items"]["$ref"] == "#"
+        self.assertEqual(data["properties"]["children"]["items"]["$ref"], "#")
 
     def test_conditional_schema(self):
         """Test conditional schema with if/then/else."""
@@ -574,12 +578,12 @@ class TestComplexExamples:
             },
         )
 
-        assert schema.if_ is not None
-        assert schema.then is not None
-        assert schema.else_ is not None
+        self.assertIsNotNone(schema.if_)
+        self.assertIsNotNone(schema.then)
+        self.assertIsNotNone(schema.else_)
 
 
-class TestJSONSerialization:
+class TestJSONSerialization(unittest.TestCase):
     """Test JSON serialization and deserialization."""
 
     def test_serialize_to_json(self):
@@ -596,9 +600,9 @@ class TestJSONSerialization:
         json_str = schema.model_dump_json(by_alias=True, exclude_none=True)
         data = json.loads(json_str)
 
-        assert data["title"] == "Test Schema"
-        assert data["type"] == "object"
-        assert "name" in data["properties"]
+        self.assertEqual(data["title"], "Test Schema")
+        self.assertEqual(data["type"], "object")
+        self.assertIn("name", data["properties"])
 
     def test_deserialize_from_json(self):
         """Test deserializing schema from JSON."""
@@ -616,11 +620,11 @@ class TestJSONSerialization:
 
         schema = JSONSchema(**json_data)
 
-        assert schema.schema_ == "https://json-schema.org/draft/2020-12/schema"
-        assert schema.title == "Product"
-        assert schema.type == "object"
-        assert len(schema.properties) == 3
-        assert schema.required == ["id", "name", "price"]
+        self.assertEqual(schema.schema_, "https://json-schema.org/draft/2020-12/schema")
+        self.assertEqual(schema.title, "Product")
+        self.assertEqual(schema.type, "object")
+        self.assertEqual(len(schema.properties), 3)
+        self.assertEqual(schema.required, ["id", "name", "price"])
 
     def test_round_trip(self):
         """Test round-trip serialization."""
@@ -640,14 +644,14 @@ class TestJSONSerialization:
         restored = JSONSchema(**data)
 
         # Verify
-        assert restored.schema_ == original.schema_
-        assert restored.id == original.id
-        assert restored.title == original.title
-        assert len(restored.properties) == len(original.properties)
-        assert restored.required == original.required
+        self.assertEqual(restored.schema_, original.schema_)
+        self.assertEqual(restored.id, original.id)
+        self.assertEqual(restored.title, original.title)
+        self.assertEqual(len(restored.properties), len(original.properties))
+        self.assertEqual(restored.required, original.required)
 
 
-class TestDeprecatedKeywords:
+class TestDeprecatedKeywords(unittest.TestCase):
     """Test deprecated keywords for backward compatibility."""
 
     def test_definitions(self):
@@ -658,8 +662,8 @@ class TestDeprecatedKeywords:
             }
         )
 
-        assert schema.definitions is not None
-        assert "address" in schema.definitions
+        self.assertIsNotNone(schema.definitions)
+        self.assertIn("address", schema.definitions)
 
     def test_dependencies(self):
         """Test deprecated 'dependencies' keyword."""
@@ -670,9 +674,9 @@ class TestDeprecatedKeywords:
             }
         )
 
-        assert schema.dependencies is not None
-        assert "credit_card" in schema.dependencies
+        self.assertIsNotNone(schema.dependencies)
+        self.assertIn("credit_card", schema.dependencies)
 
 
 if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
+    unittest.main()

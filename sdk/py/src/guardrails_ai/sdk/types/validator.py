@@ -1,5 +1,6 @@
+from __future__ import annotations
 from guardrails_ai.sdk.types.on_fail import OnFail
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, Field
 from typing import Any, Dict, List, Optional
 
 
@@ -19,4 +20,8 @@ class Validator(BaseModel):
     args: Optional[List[Any]] = None
     kwargs: Dict[str, Any] = Field(default_factory=dict)
 
-    model_config = ConfigDict(populate_by_name=True, use_enum_values=True)
+    model_config = {
+        "validate_by_alias": True,
+        "validate_by_name": True,
+        "use_enum_values": True,
+    }

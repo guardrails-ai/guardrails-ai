@@ -26,11 +26,11 @@ qa:
 	make test-cov-ci
 
 test:
-	python -m unittest discover -s tests --buffer --failfast
+	python -m unittest discover -s tests -t . --buffer --failfast
 
 test-cov:
-	coverage run -m unittest discover --start-directory tests --buffer --failfast
+	coverage run -m unittest discover --start-directory tests --top-level-directory . --buffer --failfast
 	coverage report -m
 
 test-cov-ci:
-	coverage run -m unittest discover --start-directory tests --buffer --failfast
+	coverage run -m unittest discover --start-directory tests --top-level-directory . --buffer --failfast

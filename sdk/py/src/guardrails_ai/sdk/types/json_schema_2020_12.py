@@ -318,7 +318,8 @@ class JSONSchema(BaseModel):
 
     model_config = {
         "extra": "allow",  # Allow additional properties for extensibility
-        "populate_by_name": True,  # Allow both field names and aliases
+        "validate_by_alias": True,
+        "validate_by_name": True,
     }
 
     @field_validator("type")
@@ -474,8 +475,8 @@ def string_schema(
     """Create a string schema with common constraints."""
     return JSONSchema(
         type="string",
-        min_length=min_length,
-        max_length=max_length,
+        minLength=min_length,
+        maxLength=max_length,
         pattern=pattern,
         format=format,
         **kwargs,
@@ -496,9 +497,9 @@ def number_schema(
         type="integer" if is_integer else "number",
         minimum=minimum,
         maximum=maximum,
-        exclusive_minimum=exclusive_minimum,
-        exclusive_maximum=exclusive_maximum,
-        multiple_of=multiple_of,
+        exclusiveMinimum=exclusive_minimum,
+        exclusiveMaximum=exclusive_maximum,
+        multipleOf=multiple_of,
         **kwargs,
     )
 
@@ -514,9 +515,9 @@ def array_schema(
     return JSONSchema(
         type="array",
         items=items,
-        min_items=min_items,
-        max_items=max_items,
-        unique_items=unique_items,
+        minItems=min_items,
+        maxItems=max_items,
+        uniqueItems=unique_items,
         **kwargs,
     )
 
@@ -534,9 +535,9 @@ def object_schema(
         type="object",
         properties=properties,
         required=required,
-        additional_properties=additional_properties,
-        min_properties=min_properties,
-        max_properties=max_properties,
+        additionalProperties=additional_properties,
+        minProperties=min_properties,
+        maxProperties=max_properties,
         **kwargs,
     )
 
@@ -553,24 +554,24 @@ def const_schema(value: Any, **kwargs: Any) -> JSONSchema:
 
 def ref_schema(ref: str, **kwargs: Any) -> JSONSchema:
     """Create a reference schema."""
-    return JSONSchema(ref=ref, **kwargs)
+    return JSONSchema(ref=ref, **kwargs)  # type: ignore PEP 681 issue
 
 
 def all_of_schema(*schemas: SchemaValue, **kwargs: Any) -> JSONSchema:
     """Create an allOf composition schema."""
-    return JSONSchema(all_of=list(schemas), **kwargs)
+    return JSONSchema(all_of=list(schemas), **kwargs)  # type: ignore PEP 681 issue
 
 
 def any_of_schema(*schemas: SchemaValue, **kwargs: Any) -> JSONSchema:
     """Create an anyOf composition schema."""
-    return JSONSchema(any_of=list(schemas), **kwargs)
+    return JSONSchema(any_of=list(schemas), **kwargs)  # type: ignore PEP 681 issue
 
 
 def one_of_schema(*schemas: SchemaValue, **kwargs: Any) -> JSONSchema:
     """Create a oneOf composition schema."""
-    return JSONSchema(one_of=list(schemas), **kwargs)
+    return JSONSchema(one_of=list(schemas), **kwargs)  # type: ignore PEP 681 issue
 
 
 def not_schema(schema: SchemaValue, **kwargs: Any) -> JSONSchema:
     """Create a not schema."""
-    return JSONSchema(not_=schema, **kwargs)
+    return JSONSchema(not_=schema, **kwargs)  # type: ignore PEP 681 issue
