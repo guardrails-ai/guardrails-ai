@@ -38,7 +38,9 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project.urls]
+Homepage = "https://guardrailsai.com"
 Documentation = "https://github.com/guardrails-ai/guardrails-ai/blob/main/sdk/py/docs/_build/markdown/index.md"
+Repository = "https://github.com/guardrails-ai/guardrails-ai/tree/main/sdk/py"
 
 
 [tool.ruff]
