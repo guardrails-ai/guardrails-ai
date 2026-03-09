@@ -1,0 +1,37 @@
+sdk.abstract_client
+===================
+
+.. py:module:: sdk.abstract_client
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   sdk.abstract_client.Client
+
+
+Module Contents
+---------------
+
+.. py:class:: Client
+
+   Bases: :py:obj:`Protocol`
+
+
+   Protocol defining the interface shared by all API client classes.
+
+
+   .. py:attribute:: headers
+      :type:  dict[str, str]
+
+
+   .. py:attribute:: http_client
+      :type:  httpx.AsyncClient
+
+
+   .. py:attribute:: max_retries
+      :type:  int
+
+

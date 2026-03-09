@@ -5,10 +5,7 @@ from guardrails_ai.sdk.types.error_span import ErrorSpan
 
 
 class FailResult(BaseModel):
-    """
-    FailResult is the output type of Validator.validate when validation
-    fails.
-    """
+    """The output of a validator when validation fails."""
 
     outcome: Optional[str]
     error_message: str = Field(alias="errorMessage")

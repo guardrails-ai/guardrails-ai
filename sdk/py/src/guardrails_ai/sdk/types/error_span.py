@@ -3,11 +3,10 @@ from pydantic import BaseModel, Field
 
 
 class ErrorSpan(BaseModel):
-    """
-    ErrorSpan provide additional context for why a validation failed. They
-    specify the start and end index of the segment that caused the failure,
-    which can be useful when validating large chunks of text or validating
-    while streaming with different chunking methods.
+    """Character-level span within validated text that caused a validation failure.
+
+    Useful for pinpointing failures when validating large chunks of text or
+    streaming output with varying chunk sizes.
     """
 
     start: int

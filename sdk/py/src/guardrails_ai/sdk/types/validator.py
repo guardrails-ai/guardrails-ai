@@ -5,9 +5,7 @@ from typing import Any, Dict, List, Optional
 
 
 class Validator(BaseModel):
-    """
-    Validator
-    """
+    """A validator attached to a Guard, including its configuration."""
 
     id: str = Field(
         description="The unique identifier for this Validator.  Often the hub id; e.g. guardrails/regex_match"
