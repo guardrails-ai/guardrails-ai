@@ -1,4 +1,4 @@
-.PHONY: install install-dev lint lint-fix type qa test test-cov test-cov-ci docs docs-clean view-docs
+.PHONY: install install-dev lint lint-fix type qa test test-cov test-cov-ci docs docs-html docs-md docs-clean view-docs
 # Installs production dependencies
 install:
 	pip install .;
@@ -39,9 +39,18 @@ test-cov-ci:
 install-docs:
 	pip install -e ".[docs]"
 
-# Build HTML docs
+# Build HTML and Markdown docs
 docs:
+	make docs-html
+	make docs-md
+
+# Build HTML docs
+docs-html:
 	sphinx-build -b html docs docs/_build/html
+
+# Build Markdown docs
+docs-md:
+	sphinx-build -b markdown docs/ docs/_build/markdown/
 
 # Remove generated docs
 docs-clean:

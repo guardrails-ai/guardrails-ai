@@ -14,6 +14,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.intersphinx",
     "myst_parser",
+    "sphinx_markdown_builder",
 ]
 
 # sphinx-autoapi: scan src/ without needing to import the package
