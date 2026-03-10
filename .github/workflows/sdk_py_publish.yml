@@ -77,7 +77,6 @@ jobs:
         env:
           PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
-          make build
           python -m build
         continue-on-error: false
 
