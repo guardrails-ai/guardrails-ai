@@ -13,8 +13,8 @@ on:
       - main
 
 jobs:
-  publish_version_tag_to_github:
-    name: Publish Version Tag to Github
+  publish_python_sdk:
+    name: Publish Python SDK
     runs-on: ubuntu-latest
     defaults:
       run:
