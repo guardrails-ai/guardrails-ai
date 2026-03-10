@@ -9,8 +9,10 @@ OT = TypeVar("OT", str, List, Dict)
 
 
 class ValidationOutcome(Generic[OT], BaseModel):
-    """
-    The output from a Guard execution.
+    """The output from a Guard execution.
+
+    Type parameter ``OT`` is bound to ``str | List | Dict`` and reflects the
+    shape of ``validated_output``.
     """
 
     call_id: str = Field(

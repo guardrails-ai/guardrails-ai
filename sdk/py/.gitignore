@@ -21,3 +21,8 @@ dmypy.json
 
 /coverage.xml
 /.coverage
+
+
+# docs artifacts
+docs/_build/html/
+docs/_build/markdown/.doctrees/

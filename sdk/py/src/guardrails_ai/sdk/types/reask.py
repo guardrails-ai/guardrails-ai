@@ -5,9 +5,7 @@ from guardrails_ai.sdk.types.fail_result import FailResult
 
 
 class ReAsk(BaseModel):
-    """
-    ReAsk
-    """
+    """Represents a pending reask when validation fails and retries are exhausted."""
 
     incorrect_value: Optional[Any] = Field(default=None, alias="incorrectValue")
     fail_results: Optional[List[FailResult]] = Field(default=None, alias="failResults")

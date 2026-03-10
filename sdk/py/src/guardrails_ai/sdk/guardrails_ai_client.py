@@ -7,19 +7,13 @@ from guardrails_ai.sdk.guards_api import GuardsApi
 
 
 class GuardrailsAI(Client):
-    """
-    Main Guardrails AI SDK client with namespaced API access.
+    """Main Guardrails AI SDK client with namespaced API access.
 
-    Example:
-        ```python
-        client = GuardrailsAI(
-            api_key="your-api-key"
-        )
+    Example::
 
-        guard = client.guards.retrieve(
-            name="my-guard"
-        )
-        ```
+        client = GuardrailsAI(api_key="your-api-key")
+        guard = await client.guards.retrieve(name="my-guard")
+        result = await client.guards.validate("my-guard", "some text")
     """
 
     http_client: AsyncClient
@@ -38,17 +32,17 @@ class GuardrailsAI(Client):
         headers: Mapping[str, str] | None = None,
         http_client: AsyncClient | None = None,
     ):
-        """
-        Initialize the Guardrails AI client.
+        """Initialize the Guardrails AI client.
 
         Args:
             api_key: Guardrails AI API key for authentication.
-            base_url: Base URL for the Guardrails API. Defaults to "http://localhost:8000".
+            base_url: Base URL for the Guardrails API. Defaults to ``http://localhost:8000``.
             timeout: HTTP request timeout in seconds. Defaults to None (no timeout).
             max_retries: Maximum number of retry attempts for failed requests. Defaults to 5.
             headers: Additional HTTP headers to include with every request.
-            http_client: A pre-configured httpx.AsyncClient to use instead of the default.
-                If provided, the required auth headers will be merged into its headers.
+            http_client: A pre-configured ``httpx.AsyncClient`` to use instead of the
+                default. If provided, the required auth headers will be merged into its
+                headers.
         """
         # Setup Http Client
         self.max_retries = max_retries

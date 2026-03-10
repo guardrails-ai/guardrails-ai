@@ -6,9 +6,7 @@ from guardrails_ai.sdk.types.validator import Validator
 
 
 class Guard(BaseModel):
-    """
-    Guard
-    """
+    """A configured validation pipeline retrieved from the Guardrails API."""
 
     id: str = Field(description="The unique identifier for the Guard.")
     name: str = Field(description="The name for the Guard.")

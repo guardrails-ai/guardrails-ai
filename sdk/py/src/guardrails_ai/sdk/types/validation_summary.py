@@ -5,9 +5,7 @@ from guardrails_ai.sdk.types.error_span import ErrorSpan
 
 
 class ValidationSummary(BaseModel):
-    """
-    ValidationSummary
-    """
+    """Per-validator result produced during a Guard execution."""
 
     validator_name: str = Field(
         description="The class name of the validator.", alias="validatorName"
