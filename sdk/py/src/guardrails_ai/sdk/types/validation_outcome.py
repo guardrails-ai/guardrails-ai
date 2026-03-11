@@ -8,7 +8,7 @@ from guardrails_ai.sdk.types.validation_summary import ValidationSummary
 OT = TypeVar("OT", str, List, Dict)
 
 
-class ValidationOutcome(Generic[OT], BaseModel):
+class ValidationOutcome(BaseModel, Generic[OT]):
     """The output from a Guard execution.
 
     Type parameter ``OT`` is bound to ``str | List | Dict`` and reflects the
