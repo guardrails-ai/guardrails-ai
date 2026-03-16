@@ -1,6 +1,6 @@
 from guardrails_ai.types.error_span import ErrorSpan
 from guardrails_ai.types.fail_result import FailResult
-from guardrails_ai.types.guard import Guard
+from guardrails_ai.types.guard import Guard, CreateGuardRequest
 from guardrails_ai.types.json_schema_2020_12 import JSONSchema
 from guardrails_ai.types.on_fail import OnFail
 from guardrails_ai.types.reask import ReAsk
@@ -12,6 +12,7 @@ __all__ = [
     "ErrorSpan",
     "FailResult",
     "Guard",
+    "CreateGuardRequest",
     "JSONSchema",
     "OnFail",
     "ReAsk",
