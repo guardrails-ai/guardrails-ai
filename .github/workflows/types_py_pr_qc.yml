@@ -1,0 +1,39 @@
+name: Python Types Quality Control
+
+on: 
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - types/py/**
+
+jobs:
+  qc:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./types/py
+    strategy:
+      matrix:
+        py-version: ["3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.py-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          make install
+          make install-dev
+      - name: Run Linter
+        run: |
+          make lint
+      - name: Run Type Checks
+        run: |
+          make type
+      - name: Run Tests
+        run: |
+          make test-cov-ci

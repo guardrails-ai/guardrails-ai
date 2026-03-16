@@ -1,4 +1,4 @@
-name: Publish Python SDK
+name: Publish Python Types
 
 permissions:
   id-token: write
@@ -8,17 +8,17 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - sdk/py/**
+      - types/py/**
     branches:
       - main
 
 jobs:
-  publish_python_sdk:
-    name: Publish Python SDK
+  publish_python_types:
+    name: Publish Python Types
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./sdk/py
+        working-directory: ./types/py
     outputs:
       version_tag: ${{ steps.version.outputs.version_tag }}
     steps:
@@ -51,7 +51,7 @@ jobs:
             exit 1
           fi
 
-          version_tag="sdk-py-$version"
+          version_tag="types-py-$version"
 
           echo "Checking if $version_tag already exists..."
           version_commit="$(git rev-parse "$version_tag" 2>/dev/null)"
