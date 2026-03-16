@@ -35,6 +35,11 @@ test-cov:
 test-cov-ci:
 	coverage run -m unittest discover --start-directory tests --top-level-directory . --buffer --failfast
 
+view-test-cov:
+	coverage run -m unittest discover --start-directory tests --top-level-directory . --buffer --failfast
+	coverage html
+	open htmlcov/index.html
+
 # Install docs dependencies
 install-docs:
 	pip install -e ".[docs]"

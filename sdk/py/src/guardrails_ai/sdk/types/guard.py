@@ -5,10 +5,9 @@ from guardrails_ai.sdk.types.json_schema_2020_12 import JSONSchema, string_schem
 from guardrails_ai.sdk.types.validator import Validator
 
 
-class Guard(BaseModel):
-    """A configured validation pipeline retrieved from the Guardrails API."""
+class CreateGuardRequest(BaseModel):
+    """The required request body to created a Guard in the Guardrails API."""
 
-    id: str = Field(description="The unique identifier for the Guard.")
     name: str = Field(description="The name for the Guard.")
     description: Optional[str] = Field(
         default=None,
@@ -16,5 +15,13 @@ class Guard(BaseModel):
     )
     validators: List[Validator] = Field(default_factory=list)
     output_schema: JSONSchema = Field(default=string_schema())
+
+    model_config = {"validate_by_alias": True, "validate_by_name": True}
+
+
+class Guard(CreateGuardRequest):
+    """A configured validation pipeline retrieved from the Guardrails API."""
+
+    id: str = Field(description="The unique identifier for the Guard.")
 
     model_config = {"validate_by_alias": True, "validate_by_name": True}
