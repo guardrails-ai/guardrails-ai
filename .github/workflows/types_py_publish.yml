@@ -51,7 +51,7 @@ jobs:
             exit 1
           fi
 
-          version_tag="py-$version"
+          version_tag="types-py-$version"
 
           echo "Checking if $version_tag already exists..."
           version_commit="$(git rev-parse "$version_tag" 2>/dev/null)"
