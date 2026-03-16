@@ -1,5 +1,5 @@
 import httpx
-from typing import Any
+from typing import Any, Optional
 
 
 async def post_guard(
@@ -54,7 +54,7 @@ async def get_guard(
 async def get_guards(
     *,
     client: httpx.AsyncClient,
-    name: str,
+    name: Optional[str] = None,
 ) -> Any:
     """Fetch a Guard by id from the API.
 
