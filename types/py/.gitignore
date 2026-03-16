@@ -27,5 +27,6 @@ dmypy.json
 docs/_build/html/
 docs/_build/markdown/.doctrees/
 
+
 # coverage artifacts
 htmlcov
