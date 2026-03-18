@@ -37,7 +37,7 @@ class JSONSchema(BaseModel):
     # https://json-schema.org/draft/2020-12/vocab/core
     # ========================================================================
 
-    _schema: str | None = Field(
+    schema_: str | None = Field(
         None, alias="$schema", description="URI of the meta-schema"
     )
     id: str | None = Field(
