@@ -57,15 +57,27 @@ class TestCompletionsApiCreate(unittest.IsolatedAsyncioTestCase):
         )
 
         mock_chat_completion = MagicMock()
+        mock_chat_completion.model_dump = MagicMock()
         mock_openai_instance = MagicMock()
         mock_openai_instance.chat.completions.create = AsyncMock(
             return_value=mock_chat_completion
         )
 
-        with patch(
-            "guardrails_ai.sdk.chat_completions_api.AsyncOpenAIClient",
-            return_value=mock_openai_instance,
-        ) as MockOpenAIClient:
+        mock_guarded_chat_completion_instance = MagicMock()
+
+        with (
+            patch(
+                "guardrails_ai.sdk.chat_completions_api.AsyncOpenAIClient",
+                return_value=mock_openai_instance,
+            ) as MockOpenAIClient,
+            patch(
+                "guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion",
+                return_value=mock_guarded_chat_completion_instance,
+            ) as MockGuardedChatCompletion,
+        ):
+            MockGuardedChatCompletion.model_validate.return_value = (
+                mock_guarded_chat_completion_instance
+            )
             result = await api.create(
                 "my-guard",
                 model="gpt-4",
@@ -77,7 +89,7 @@ class TestCompletionsApiCreate(unittest.IsolatedAsyncioTestCase):
             http_client=http_client,
             max_retries=2,
         )
-        self.assertIs(result, mock_chat_completion)
+        self.assertIs(result, mock_guarded_chat_completion_instance)
 
     async def test_create_passes_kwargs_to_openai_create(self):
         http_client = make_http_client()
@@ -88,12 +100,24 @@ class TestCompletionsApiCreate(unittest.IsolatedAsyncioTestCase):
         )
 
         mock_openai_instance = MagicMock()
-        mock_openai_instance.chat.completions.create = AsyncMock(return_value=None)
+        mock_openai_instance.chat.completions.create = AsyncMock(
+            return_value=MagicMock()
+        )
+        mock_guarded_chat_completion_instance = MagicMock()
 
-        with patch(
-            "guardrails_ai.sdk.chat_completions_api.AsyncOpenAIClient",
-            return_value=mock_openai_instance,
+        with (
+            patch(
+                "guardrails_ai.sdk.chat_completions_api.AsyncOpenAIClient",
+                return_value=mock_openai_instance,
+            ),
+            patch(
+                "guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion",
+                return_value=mock_guarded_chat_completion_instance,
+            ) as MockGuardedChatCompletion,
         ):
+            MockGuardedChatCompletion.model_validate.return_value = (
+                mock_guarded_chat_completion_instance
+            )
             await api.create(
                 "my-guard",
                 model="gpt-4",
@@ -117,12 +141,25 @@ class TestCompletionsApiCreate(unittest.IsolatedAsyncioTestCase):
         )
 
         mock_openai_instance = MagicMock()
-        mock_openai_instance.chat.completions.create = AsyncMock(return_value=None)
+        mock_openai_instance.chat.completions.create = AsyncMock(
+            return_value=MagicMock()
+        )
 
-        with patch(
-            "guardrails_ai.sdk.chat_completions_api.AsyncOpenAIClient",
-            return_value=mock_openai_instance,
-        ) as MockOpenAIClient:
+        mock_guarded_chat_completion_instance = MagicMock()
+
+        with (
+            patch(
+                "guardrails_ai.sdk.chat_completions_api.AsyncOpenAIClient",
+                return_value=mock_openai_instance,
+            ) as MockOpenAIClient,
+            patch(
+                "guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion",
+                return_value=mock_guarded_chat_completion_instance,
+            ) as MockGuardedChatCompletion,
+        ):
+            MockGuardedChatCompletion.model_validate.return_value = (
+                mock_guarded_chat_completion_instance
+            )
             await api.create("special-guard", model="gpt-4", messages=[])
 
         call_kwargs = MockOpenAIClient.call_args.kwargs

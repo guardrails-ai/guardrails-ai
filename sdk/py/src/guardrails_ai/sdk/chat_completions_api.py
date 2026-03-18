@@ -9,14 +9,15 @@ from openai.types.completion_create_params import (
     CompletionCreateParamsBase,
 )
 from openai.types.chat import ChatCompletion, ChatCompletionChunk
+from pydantic import Field
 
 
 class GuardedChatCompletion(ChatCompletion):
-    guardrails: Optional[ValidationOutcome]
+    guardrails: Optional[ValidationOutcome] = Field(default=None)
 
 
 class GuardedChatCompletionChunk(ChatCompletionChunk):
-    guardrails: Optional[ValidationOutcome]
+    guardrails: Optional[ValidationOutcome] = Field(default=None)
 
 
 class CompletionsApi(Client):
@@ -94,7 +95,16 @@ class CompletionsApi(Client):
             http_client=self.http_client,
             max_retries=self.max_retries,
         )
-        return await openai_client.chat.completions.create(stream=stream, **kwargs)  # type: ignore
+        res = await openai_client.chat.completions.create(stream=stream, **kwargs)  # type: ignore
+
+        if stream is True:
+            return AsyncStream[GuardedChatCompletionChunk](
+                cast_to=GuardedChatCompletionChunk,
+                response=res.response,
+                client=openai_client,
+            )
+        else:
+            return GuardedChatCompletion.model_validate(res.model_dump())
 
 
 class ChatApi(Client):
