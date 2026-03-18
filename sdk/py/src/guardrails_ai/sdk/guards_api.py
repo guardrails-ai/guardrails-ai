@@ -1,8 +1,7 @@
 from typing import Any, Optional
 from guardrails_ai.sdk.chat_completions_api import ChatApi
-from guardrails_ai.sdk.types.guard import CreateGuardRequest
 from httpx import AsyncClient
-from guardrails_ai.sdk.types import Guard, ValidationOutcome
+from guardrails_ai.types import Guard, ValidationOutcome, CreateGuardRequest
 from guardrails_ai.sdk.methods import (
     delete_guard,
     get_guard,

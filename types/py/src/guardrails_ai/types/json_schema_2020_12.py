@@ -15,14 +15,9 @@ This implementation supports all seven vocabularies:
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, TypeAlias, Union
 
 from pydantic import BaseModel, Field, field_validator, model_validator
-
-
-# Type aliases for clarity
-SchemaValue = Union[bool, "JSONSchema"]
-StringOrStringArray = Union[str, List[str]]
 
 
 class JSONSchema(BaseModel):
@@ -42,7 +37,7 @@ class JSONSchema(BaseModel):
     # https://json-schema.org/draft/2020-12/vocab/core
     # ========================================================================
 
-    schema_: str | None = Field(
+    _schema: str | None = Field(
         None, alias="$schema", description="URI of the meta-schema"
     )
     id: str | None = Field(
@@ -417,8 +412,10 @@ class JSONSchema(BaseModel):
         return self
 
 
-# Type alias for schemas that can be boolean or object
-Schema = Union[bool, JSONSchema]
+# Type aliases for clarity
+Schema: TypeAlias = Union[bool, JSONSchema]
+SchemaValue: TypeAlias = Union[bool, JSONSchema]
+StringOrStringArray: TypeAlias = Union[str, List[str]]
 
 
 def create_schema(**kwargs: Any) -> JSONSchema:
@@ -427,7 +424,7 @@ def create_schema(**kwargs: Any) -> JSONSchema:
 
     Args:
         **kwargs: Keyword arguments corresponding to JSONSchema fields.
-                  Use the Pythonic field names (e.g., 'schema_' instead of '$schema').
+                  Use the Pythonic field names (e.g., 'schema' instead of '$schema').
 
     Returns:
         A JSONSchema instance.
@@ -557,21 +554,21 @@ def ref_schema(ref: str, **kwargs: Any) -> JSONSchema:
     return JSONSchema(ref=ref, **kwargs)  # type: ignore PEP 681 issue
 
 
-def all_of_schema(*schemas: SchemaValue, **kwargs: Any) -> JSONSchema:
+def all_of_schema(*schemas: "SchemaValue", **kwargs: Any) -> JSONSchema:
     """Create an allOf composition schema."""
     return JSONSchema(all_of=list(schemas), **kwargs)  # type: ignore PEP 681 issue
 
 
-def any_of_schema(*schemas: SchemaValue, **kwargs: Any) -> JSONSchema:
+def any_of_schema(*schemas: "SchemaValue", **kwargs: Any) -> JSONSchema:
     """Create an anyOf composition schema."""
     return JSONSchema(any_of=list(schemas), **kwargs)  # type: ignore PEP 681 issue
 
 
-def one_of_schema(*schemas: SchemaValue, **kwargs: Any) -> JSONSchema:
+def one_of_schema(*schemas: "SchemaValue", **kwargs: Any) -> JSONSchema:
     """Create a oneOf composition schema."""
     return JSONSchema(one_of=list(schemas), **kwargs)  # type: ignore PEP 681 issue
 
 
-def not_schema(schema: SchemaValue, **kwargs: Any) -> JSONSchema:
+def not_schema(schema: "SchemaValue", **kwargs: Any) -> JSONSchema:
     """Create a not schema."""
     return JSONSchema(not_=schema, **kwargs)  # type: ignore PEP 681 issue

@@ -1,0 +1,1304 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../../genindex.html"><link rel="search" title="Search" href="../../../search.html"><link rel="next" title="guardrails_ai.types.error_span" href="error_span/index.html"><link rel="prev" title="guardrails_ai.sdk.methods" href="../sdk/methods/index.html">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>guardrails_ai.types - Guardrails AI</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Guardrails AI</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  
+  <span class="sidebar-brand-text">Guardrails AI</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../../index.html">API Reference</a><input aria-label="Toggle navigation of API Reference" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2 current has-children"><a class="reference internal" href="../index.html">guardrails_ai</a><input aria-label="Toggle navigation of guardrails_ai" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="../sdk/index.html">guardrails_ai.sdk</a><input aria-label="Toggle navigation of guardrails_ai.sdk" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../sdk/abstract_client/index.html">guardrails_ai.sdk.abstract_client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sdk/chat_completions_api/index.html">guardrails_ai.sdk.chat_completions_api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sdk/guardrails_ai_client/index.html">guardrails_ai.sdk.guardrails_ai_client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sdk/guards_api/index.html">guardrails_ai.sdk.guards_api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sdk/methods/index.html">guardrails_ai.sdk.methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current has-children current-page"><a class="current reference internal" href="#">guardrails_ai.types</a><input aria-label="Toggle navigation of guardrails_ai.types" checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="error_span/index.html">guardrails_ai.types.error_span</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fail_result/index.html">guardrails_ai.types.fail_result</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guard/index.html">guardrails_ai.types.guard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="json_schema_2020_12/index.html">guardrails_ai.types.json_schema_2020_12</a></li>
+<li class="toctree-l4"><a class="reference internal" href="on_fail/index.html">guardrails_ai.types.on_fail</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reask/index.html">guardrails_ai.types.reask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validation_outcome/index.html">guardrails_ai.types.validation_outcome</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validation_summary/index.html">guardrails_ai.types.validation_summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validator/index.html">guardrails_ai.types.validator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../../_sources/autoapi/guardrails_ai/types/index.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="module-guardrails_ai.types">
+<span id="guardrails-ai-types"></span><h1>guardrails_ai.types<a class="headerlink" href="#module-guardrails_ai.types" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="error_span/index.html">guardrails_ai.types.error_span</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fail_result/index.html">guardrails_ai.types.fail_result</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guard/index.html">guardrails_ai.types.guard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json_schema_2020_12/index.html">guardrails_ai.types.json_schema_2020_12</a></li>
+<li class="toctree-l1"><a class="reference internal" href="on_fail/index.html">guardrails_ai.types.on_fail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reask/index.html">guardrails_ai.types.reask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="validation_outcome/index.html">guardrails_ai.types.validation_outcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="validation_summary/index.html">guardrails_ai.types.validation_summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="validator/index.html">guardrails_ai.types.validator</a></li>
+</ul>
+</div>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guardrails_ai.types.CreateGuardRequest" title="guardrails_ai.types.CreateGuardRequest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CreateGuardRequest</span></code></a></p></td>
+<td><p>The required request body to created a Guard in the Guardrails API.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#guardrails_ai.types.ErrorSpan" title="guardrails_ai.types.ErrorSpan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ErrorSpan</span></code></a></p></td>
+<td><p>Character-level span within validated text that caused a validation failure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guardrails_ai.types.FailResult" title="guardrails_ai.types.FailResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FailResult</span></code></a></p></td>
+<td><p>The output of a validator when validation fails.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#guardrails_ai.types.Guard" title="guardrails_ai.types.Guard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Guard</span></code></a></p></td>
+<td><p>A configured validation pipeline retrieved from the Guardrails API.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guardrails_ai.types.JSONSchema" title="guardrails_ai.types.JSONSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">JSONSchema</span></code></a></p></td>
+<td><p>A strongly typed representation of JSON Schema Draft 2020-12.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#guardrails_ai.types.OnFail" title="guardrails_ai.types.OnFail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OnFail</span></code></a></p></td>
+<td><p>OnFail is an Enum that represents the different actions that can</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guardrails_ai.types.ReAsk" title="guardrails_ai.types.ReAsk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReAsk</span></code></a></p></td>
+<td><p>Represents a pending reask when validation fails and retries are exhausted.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome" title="guardrails_ai.types.ValidationOutcome"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidationOutcome</span></code></a></p></td>
+<td><p>The output from a Guard execution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guardrails_ai.types.ValidationSummary" title="guardrails_ai.types.ValidationSummary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidationSummary</span></code></a></p></td>
+<td><p>Per-validator result produced during a Guard execution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#guardrails_ai.types.Validator" title="guardrails_ai.types.Validator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Validator</span></code></a></p></td>
+<td><p>A validator attached to a Guard, including its configuration.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.CreateGuardRequest">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">CreateGuardRequest</span></span><a class="headerlink" href="#guardrails_ai.types.CreateGuardRequest" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic Validation v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
+<p>The required request body to created a Guard in the Guardrails API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.CreateGuardRequest.description">
+<span class="sig-name descname"><span class="pre">description</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.CreateGuardRequest.description" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.CreateGuardRequest.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#guardrails_ai.types.CreateGuardRequest.model_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.CreateGuardRequest.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#guardrails_ai.types.CreateGuardRequest.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.CreateGuardRequest.output_schema">
+<span class="sig-name descname"><span class="pre">output_schema</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.JSONSchema" title="guardrails_ai.types.json_schema_2020_12.JSONSchema"><span class="pre">guardrails_ai.types.json_schema_2020_12.JSONSchema</span></a></span><a class="headerlink" href="#guardrails_ai.types.CreateGuardRequest.output_schema" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.CreateGuardRequest.validators">
+<span class="sig-name descname"><span class="pre">validators</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="validator/index.html#guardrails_ai.types.validator.Validator" title="guardrails_ai.types.validator.Validator"><span class="pre">guardrails_ai.types.validator.Validator</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#guardrails_ai.types.CreateGuardRequest.validators" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.ErrorSpan">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">ErrorSpan</span></span><a class="headerlink" href="#guardrails_ai.types.ErrorSpan" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic Validation v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
+<p>Character-level span within validated text that caused a validation failure.</p>
+<p>Useful for pinpointing failures when validating large chunks of text or
+streaming output with varying chunk sizes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ErrorSpan.end">
+<span class="sig-name descname"><span class="pre">end</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><a class="headerlink" href="#guardrails_ai.types.ErrorSpan.end" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ErrorSpan.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#guardrails_ai.types.ErrorSpan.model_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ErrorSpan.reason">
+<span class="sig-name descname"><span class="pre">reason</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#guardrails_ai.types.ErrorSpan.reason" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ErrorSpan.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><a class="headerlink" href="#guardrails_ai.types.ErrorSpan.start" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.FailResult">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">FailResult</span></span><a class="headerlink" href="#guardrails_ai.types.FailResult" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic Validation v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
+<p>The output of a validator when validation fails.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.FailResult.error_message">
+<span class="sig-name descname"><span class="pre">error_message</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#guardrails_ai.types.FailResult.error_message" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.FailResult.error_spans">
+<span class="sig-name descname"><span class="pre">error_spans</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="error_span/index.html#guardrails_ai.types.error_span.ErrorSpan" title="guardrails_ai.types.error_span.ErrorSpan"><span class="pre">guardrails_ai.types.error_span.ErrorSpan</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.FailResult.error_spans" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.FailResult.fix_value">
+<span class="sig-name descname"><span class="pre">fix_value</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.FailResult.fix_value" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.FailResult.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#guardrails_ai.types.FailResult.metadata" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.FailResult.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#guardrails_ai.types.FailResult.model_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.FailResult.outcome">
+<span class="sig-name descname"><span class="pre">outcome</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.FailResult.outcome" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.FailResult.validated_chunk">
+<span class="sig-name descname"><span class="pre">validated_chunk</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.FailResult.validated_chunk" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.Guard">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">Guard</span></span><a class="headerlink" href="#guardrails_ai.types.Guard" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#guardrails_ai.types.CreateGuardRequest" title="guardrails_ai.types.CreateGuardRequest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CreateGuardRequest</span></code></a></p>
+<p>A configured validation pipeline retrieved from the Guardrails API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.Guard.id">
+<span class="sig-name descname"><span class="pre">id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#guardrails_ai.types.Guard.id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.Guard.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#guardrails_ai.types.Guard.model_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">JSONSchema</span></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic Validation v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
+<p>A strongly typed representation of JSON Schema Draft 2020-12.</p>
+<p>JSON Schema can be either a boolean or an object with various properties.
+When boolean:
+- true: validates any instance
+- false: validates no instance</p>
+<p>When object: contains various keywords from different vocabularies.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.validate_conditional">
+<span class="sig-name descname"><span class="pre">validate_conditional</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#guardrails_ai.types.JSONSchema" title="guardrails_ai.types.JSONSchema"><span class="pre">JSONSchema</span></a></span></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.validate_conditional" title="Link to this definition">¶</a></dt>
+<dd><p>Validate that then/else are only used with if.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.validate_contains_constraints">
+<span class="sig-name descname"><span class="pre">validate_contains_constraints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#guardrails_ai.types.JSONSchema" title="guardrails_ai.types.JSONSchema"><span class="pre">JSONSchema</span></a></span></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.validate_contains_constraints" title="Link to this definition">¶</a></dt>
+<dd><p>Validate that minContains and maxContains are used with contains.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.validate_length_constraints">
+<span class="sig-name descname"><span class="pre">validate_length_constraints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#guardrails_ai.types.JSONSchema" title="guardrails_ai.types.JSONSchema"><span class="pre">JSONSchema</span></a></span></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.validate_length_constraints" title="Link to this definition">¶</a></dt>
+<dd><p>Validate min/max length constraints.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.validate_numeric_constraints">
+<span class="sig-name descname"><span class="pre">validate_numeric_constraints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#guardrails_ai.types.JSONSchema" title="guardrails_ai.types.JSONSchema"><span class="pre">JSONSchema</span></a></span></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.validate_numeric_constraints" title="Link to this definition">¶</a></dt>
+<dd><p>Validate numeric constraints.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.validate_type">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">validate_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.StringOrStringArray" title="guardrails_ai.types.json_schema_2020_12.StringOrStringArray"><span class="pre">StringOrStringArray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.StringOrStringArray" title="guardrails_ai.types.json_schema_2020_12.StringOrStringArray"><span class="pre">StringOrStringArray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.validate_type" title="Link to this definition">¶</a></dt>
+<dd><p>Validate that type values are one of the allowed JSON Schema types.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.additional_properties">
+<span class="sig-name descname"><span class="pre">additional_properties</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.additional_properties" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.all_of">
+<span class="sig-name descname"><span class="pre">all_of</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.all_of" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.anchor">
+<span class="sig-name descname"><span class="pre">anchor</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.anchor" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.any_of">
+<span class="sig-name descname"><span class="pre">any_of</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.any_of" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.comment">
+<span class="sig-name descname"><span class="pre">comment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.comment" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.const">
+<span class="sig-name descname"><span class="pre">const</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.const" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.contains">
+<span class="sig-name descname"><span class="pre">contains</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.contains" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.content_encoding">
+<span class="sig-name descname"><span class="pre">content_encoding</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.content_encoding" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.content_media_type">
+<span class="sig-name descname"><span class="pre">content_media_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.content_media_type" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.content_schema">
+<span class="sig-name descname"><span class="pre">content_schema</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.content_schema" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.default">
+<span class="sig-name descname"><span class="pre">default</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.default" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.definitions">
+<span class="sig-name descname"><span class="pre">definitions</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.definitions" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.defs">
+<span class="sig-name descname"><span class="pre">defs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.defs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.dependencies" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.dependent_required">
+<span class="sig-name descname"><span class="pre">dependent_required</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.dependent_required" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.dependent_schemas">
+<span class="sig-name descname"><span class="pre">dependent_schemas</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.dependent_schemas" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.deprecated">
+<span class="sig-name descname"><span class="pre">deprecated</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.deprecated" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.description">
+<span class="sig-name descname"><span class="pre">description</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.description" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.dynamic_anchor">
+<span class="sig-name descname"><span class="pre">dynamic_anchor</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.dynamic_anchor" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.dynamic_ref">
+<span class="sig-name descname"><span class="pre">dynamic_ref</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.dynamic_ref" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.else_">
+<span class="sig-name descname"><span class="pre">else_</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.else_" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.enum">
+<span class="sig-name descname"><span class="pre">enum</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.enum" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.examples">
+<span class="sig-name descname"><span class="pre">examples</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.examples" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.exclusive_maximum">
+<span class="sig-name descname"><span class="pre">exclusive_maximum</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.exclusive_maximum" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.exclusive_minimum">
+<span class="sig-name descname"><span class="pre">exclusive_minimum</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.exclusive_minimum" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.format" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.id">
+<span class="sig-name descname"><span class="pre">id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.if_">
+<span class="sig-name descname"><span class="pre">if_</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.if_" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.items" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.max_contains">
+<span class="sig-name descname"><span class="pre">max_contains</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.max_contains" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.max_items">
+<span class="sig-name descname"><span class="pre">max_items</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.max_items" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.max_length">
+<span class="sig-name descname"><span class="pre">max_length</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.max_length" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.max_properties">
+<span class="sig-name descname"><span class="pre">max_properties</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.max_properties" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.maximum">
+<span class="sig-name descname"><span class="pre">maximum</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.maximum" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.min_contains">
+<span class="sig-name descname"><span class="pre">min_contains</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.min_contains" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.min_items">
+<span class="sig-name descname"><span class="pre">min_items</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.min_items" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.min_length">
+<span class="sig-name descname"><span class="pre">min_length</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.min_length" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.min_properties">
+<span class="sig-name descname"><span class="pre">min_properties</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.min_properties" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.minimum">
+<span class="sig-name descname"><span class="pre">minimum</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.minimum" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.model_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.multiple_of">
+<span class="sig-name descname"><span class="pre">multiple_of</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.multiple_of" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.not_">
+<span class="sig-name descname"><span class="pre">not_</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.not_" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.one_of">
+<span class="sig-name descname"><span class="pre">one_of</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.one_of" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.pattern">
+<span class="sig-name descname"><span class="pre">pattern</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.pattern" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.pattern_properties">
+<span class="sig-name descname"><span class="pre">pattern_properties</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.pattern_properties" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.prefix_items">
+<span class="sig-name descname"><span class="pre">prefix_items</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.prefix_items" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.properties">
+<span class="sig-name descname"><span class="pre">properties</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.properties" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.property_names">
+<span class="sig-name descname"><span class="pre">property_names</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.property_names" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.read_only">
+<span class="sig-name descname"><span class="pre">read_only</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.read_only" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.recursive_anchor">
+<span class="sig-name descname"><span class="pre">recursive_anchor</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.recursive_anchor" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.recursive_ref">
+<span class="sig-name descname"><span class="pre">recursive_ref</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.recursive_ref" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.ref">
+<span class="sig-name descname"><span class="pre">ref</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.ref" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.required">
+<span class="sig-name descname"><span class="pre">required</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.required" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.then">
+<span class="sig-name descname"><span class="pre">then</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.then" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.title">
+<span class="sig-name descname"><span class="pre">title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.title" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.type">
+<span class="sig-name descname"><span class="pre">type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.StringOrStringArray" title="guardrails_ai.types.json_schema_2020_12.StringOrStringArray"><span class="pre">StringOrStringArray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.type" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.unevaluated_items">
+<span class="sig-name descname"><span class="pre">unevaluated_items</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.unevaluated_items" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.unevaluated_properties">
+<span class="sig-name descname"><span class="pre">unevaluated_properties</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue" title="guardrails_ai.types.json_schema_2020_12.SchemaValue"><span class="pre">SchemaValue</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.unevaluated_properties" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.unique_items">
+<span class="sig-name descname"><span class="pre">unique_items</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.unique_items" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.vocabulary">
+<span class="sig-name descname"><span class="pre">vocabulary</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.vocabulary" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.JSONSchema.write_only">
+<span class="sig-name descname"><span class="pre">write_only</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.JSONSchema.write_only" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.OnFail">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">OnFail</span></span><a class="headerlink" href="#guardrails_ai.types.OnFail" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<p>OnFail is an Enum that represents the different actions that can
+be taken when a validation fails.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.OnFail.REASK">
+<span class="sig-name descname"><span class="pre">REASK</span></span><a class="headerlink" href="#guardrails_ai.types.OnFail.REASK" title="Link to this definition">¶</a></dt>
+<dd><p>On failure, Reask the LLM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Literal[“reask”]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.OnFail.FIX">
+<span class="sig-name descname"><span class="pre">FIX</span></span><a class="headerlink" href="#guardrails_ai.types.OnFail.FIX" title="Link to this definition">¶</a></dt>
+<dd><p>On failure, apply a static fix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Literal[“fix”]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.OnFail.FILTER">
+<span class="sig-name descname"><span class="pre">FILTER</span></span><a class="headerlink" href="#guardrails_ai.types.OnFail.FILTER" title="Link to this definition">¶</a></dt>
+<dd><p>On failure, filter out the invalid values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Literal[“filter”]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.OnFail.REFRAIN">
+<span class="sig-name descname"><span class="pre">REFRAIN</span></span><a class="headerlink" href="#guardrails_ai.types.OnFail.REFRAIN" title="Link to this definition">¶</a></dt>
+<dd><p>On failure, refrain from responding;
+return an empty value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Literal[“refrain”]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.OnFail.NOOP">
+<span class="sig-name descname"><span class="pre">NOOP</span></span><a class="headerlink" href="#guardrails_ai.types.OnFail.NOOP" title="Link to this definition">¶</a></dt>
+<dd><p>On failure, do nothing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Literal[“noop”]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.OnFail.EXCEPTION">
+<span class="sig-name descname"><span class="pre">EXCEPTION</span></span><a class="headerlink" href="#guardrails_ai.types.OnFail.EXCEPTION" title="Link to this definition">¶</a></dt>
+<dd><p>On failure, raise a ValidationError.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Literal[“exception”]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.OnFail.FIX_REASK">
+<span class="sig-name descname"><span class="pre">FIX_REASK</span></span><a class="headerlink" href="#guardrails_ai.types.OnFail.FIX_REASK" title="Link to this definition">¶</a></dt>
+<dd><p>On failure, apply a static fix,
+check if the fixed value passed validation, if not then reask the LLM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Literal[“fix_reask”]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.OnFail.CUSTOM">
+<span class="sig-name descname"><span class="pre">CUSTOM</span></span><a class="headerlink" href="#guardrails_ai.types.OnFail.CUSTOM" title="Link to this definition">¶</a></dt>
+<dd><p>On failure, call a custom function with the
+invalid value and the FailResult’s from any validators run on the value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Literal[“custom”]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">CUSTOM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'custom'</span></span><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">EXCEPTION</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'exception'</span></span><a class="headerlink" href="#id1" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">FILTER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'filter'</span></span><a class="headerlink" href="#id2" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">FIX</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fix'</span></span><a class="headerlink" href="#id3" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">FIX_REASK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fix_reask'</span></span><a class="headerlink" href="#id4" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">NOOP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noop'</span></span><a class="headerlink" href="#id5" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">REASK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reask'</span></span><a class="headerlink" href="#id6" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">REFRAIN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'refrain'</span></span><a class="headerlink" href="#id7" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.ReAsk">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">ReAsk</span></span><a class="headerlink" href="#guardrails_ai.types.ReAsk" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic Validation v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
+<p>Represents a pending reask when validation fails and retries are exhausted.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ReAsk.fail_results">
+<span class="sig-name descname"><span class="pre">fail_results</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="fail_result/index.html#guardrails_ai.types.fail_result.FailResult" title="guardrails_ai.types.fail_result.FailResult"><span class="pre">guardrails_ai.types.fail_result.FailResult</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ReAsk.fail_results" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ReAsk.incorrect_value">
+<span class="sig-name descname"><span class="pre">incorrect_value</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ReAsk.incorrect_value" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ReAsk.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#guardrails_ai.types.ReAsk.model_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationOutcome">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">ValidationOutcome</span></span><a class="headerlink" href="#guardrails_ai.types.ValidationOutcome" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic Validation v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">OT</span></code>]</p>
+<p>The output from a Guard execution.</p>
+<p>Type parameter <code class="docutils literal notranslate"><span class="pre">OT</span></code> is bound to <code class="docutils literal notranslate"><span class="pre">str</span> <span class="pre">|</span> <span class="pre">List</span> <span class="pre">|</span> <span class="pre">Dict</span></code> and reflects the
+shape of <code class="docutils literal notranslate"><span class="pre">validated_output</span></code>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationOutcome.call_id">
+<span class="sig-name descname"><span class="pre">call_id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationOutcome.call_id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationOutcome.error">
+<span class="sig-name descname"><span class="pre">error</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationOutcome.error" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationOutcome.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#guardrails_ai.types.ValidationOutcome.model_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationOutcome.raw_llm_output">
+<span class="sig-name descname"><span class="pre">raw_llm_output</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationOutcome.raw_llm_output" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationOutcome.reask">
+<span class="sig-name descname"><span class="pre">reask</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="reask/index.html#guardrails_ai.types.reask.ReAsk" title="guardrails_ai.types.reask.ReAsk"><span class="pre">guardrails_ai.types.reask.ReAsk</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationOutcome.reask" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationOutcome.validated_output">
+<span class="sig-name descname"><span class="pre">validated_output</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="validation_outcome/index.html#guardrails_ai.types.validation_outcome.OT" title="guardrails_ai.types.validation_outcome.OT"><span class="pre">OT</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationOutcome.validated_output" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationOutcome.validation_passed">
+<span class="sig-name descname"><span class="pre">validation_passed</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationOutcome.validation_passed" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationOutcome.validation_summaries">
+<span class="sig-name descname"><span class="pre">validation_summaries</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="validation_summary/index.html#guardrails_ai.types.validation_summary.ValidationSummary" title="guardrails_ai.types.validation_summary.ValidationSummary"><span class="pre">guardrails_ai.types.validation_summary.ValidationSummary</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationOutcome.validation_summaries" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationSummary">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">ValidationSummary</span></span><a class="headerlink" href="#guardrails_ai.types.ValidationSummary" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic Validation v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
+<p>Per-validator result produced during a Guard execution.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationSummary.error_spans">
+<span class="sig-name descname"><span class="pre">error_spans</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="error_span/index.html#guardrails_ai.types.error_span.ErrorSpan" title="guardrails_ai.types.error_span.ErrorSpan"><span class="pre">guardrails_ai.types.error_span.ErrorSpan</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationSummary.error_spans" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationSummary.failure_reason">
+<span class="sig-name descname"><span class="pre">failure_reason</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationSummary.failure_reason" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationSummary.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#guardrails_ai.types.ValidationSummary.model_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationSummary.property_path">
+<span class="sig-name descname"><span class="pre">property_path</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationSummary.property_path" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationSummary.validator_name">
+<span class="sig-name descname"><span class="pre">validator_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationSummary.validator_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationSummary.validator_status">
+<span class="sig-name descname"><span class="pre">validator_status</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'pass'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'fail'</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#guardrails_ai.types.ValidationSummary.validator_status" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.Validator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">Validator</span></span><a class="headerlink" href="#guardrails_ai.types.Validator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic Validation v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
+<p>A validator attached to a Guard, including its configuration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.Validator.args">
+<span class="sig-name descname"><span class="pre">args</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#guardrails_ai.types.Validator.args" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.Validator.id">
+<span class="sig-name descname"><span class="pre">id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#guardrails_ai.types.Validator.id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.Validator.kwargs">
+<span class="sig-name descname"><span class="pre">kwargs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#guardrails_ai.types.Validator.kwargs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.Validator.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#guardrails_ai.types.Validator.model_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.Validator.on">
+<span class="sig-name descname"><span class="pre">on</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.Validator.on" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.Validator.on_fail">
+<span class="sig-name descname"><span class="pre">on_fail</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="on_fail/index.html#guardrails_ai.types.on_fail.OnFail" title="guardrails_ai.types.on_fail.OnFail"><span class="pre">guardrails_ai.types.on_fail.OnFail</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.Validator.on_fail" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="error_span/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">guardrails_ai.types.error_span</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../sdk/methods/index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">guardrails_ai.sdk.methods</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Guardrails AI
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">guardrails_ai.types</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#package-contents">Package Contents</a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.CreateGuardRequest"><code class="docutils literal notranslate"><span class="pre">CreateGuardRequest</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.CreateGuardRequest.description"><code class="docutils literal notranslate"><span class="pre">CreateGuardRequest.description</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.CreateGuardRequest.model_config"><code class="docutils literal notranslate"><span class="pre">CreateGuardRequest.model_config</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.CreateGuardRequest.name"><code class="docutils literal notranslate"><span class="pre">CreateGuardRequest.name</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.CreateGuardRequest.output_schema"><code class="docutils literal notranslate"><span class="pre">CreateGuardRequest.output_schema</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.CreateGuardRequest.validators"><code class="docutils literal notranslate"><span class="pre">CreateGuardRequest.validators</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guardrails_ai.types.ErrorSpan"><code class="docutils literal notranslate"><span class="pre">ErrorSpan</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.ErrorSpan.end"><code class="docutils literal notranslate"><span class="pre">ErrorSpan.end</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ErrorSpan.model_config"><code class="docutils literal notranslate"><span class="pre">ErrorSpan.model_config</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ErrorSpan.reason"><code class="docutils literal notranslate"><span class="pre">ErrorSpan.reason</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ErrorSpan.start"><code class="docutils literal notranslate"><span class="pre">ErrorSpan.start</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guardrails_ai.types.FailResult"><code class="docutils literal notranslate"><span class="pre">FailResult</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.FailResult.error_message"><code class="docutils literal notranslate"><span class="pre">FailResult.error_message</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.FailResult.error_spans"><code class="docutils literal notranslate"><span class="pre">FailResult.error_spans</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.FailResult.fix_value"><code class="docutils literal notranslate"><span class="pre">FailResult.fix_value</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.FailResult.metadata"><code class="docutils literal notranslate"><span class="pre">FailResult.metadata</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.FailResult.model_config"><code class="docutils literal notranslate"><span class="pre">FailResult.model_config</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.FailResult.outcome"><code class="docutils literal notranslate"><span class="pre">FailResult.outcome</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.FailResult.validated_chunk"><code class="docutils literal notranslate"><span class="pre">FailResult.validated_chunk</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guardrails_ai.types.Guard"><code class="docutils literal notranslate"><span class="pre">Guard</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.Guard.id"><code class="docutils literal notranslate"><span class="pre">Guard.id</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.Guard.model_config"><code class="docutils literal notranslate"><span class="pre">Guard.model_config</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema"><code class="docutils literal notranslate"><span class="pre">JSONSchema</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.validate_conditional"><code class="docutils literal notranslate"><span class="pre">JSONSchema.validate_conditional()</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.validate_contains_constraints"><code class="docutils literal notranslate"><span class="pre">JSONSchema.validate_contains_constraints()</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.validate_length_constraints"><code class="docutils literal notranslate"><span class="pre">JSONSchema.validate_length_constraints()</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.validate_numeric_constraints"><code class="docutils literal notranslate"><span class="pre">JSONSchema.validate_numeric_constraints()</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.validate_type"><code class="docutils literal notranslate"><span class="pre">JSONSchema.validate_type()</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.additional_properties"><code class="docutils literal notranslate"><span class="pre">JSONSchema.additional_properties</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.all_of"><code class="docutils literal notranslate"><span class="pre">JSONSchema.all_of</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.anchor"><code class="docutils literal notranslate"><span class="pre">JSONSchema.anchor</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.any_of"><code class="docutils literal notranslate"><span class="pre">JSONSchema.any_of</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.comment"><code class="docutils literal notranslate"><span class="pre">JSONSchema.comment</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.const"><code class="docutils literal notranslate"><span class="pre">JSONSchema.const</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.contains"><code class="docutils literal notranslate"><span class="pre">JSONSchema.contains</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.content_encoding"><code class="docutils literal notranslate"><span class="pre">JSONSchema.content_encoding</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.content_media_type"><code class="docutils literal notranslate"><span class="pre">JSONSchema.content_media_type</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.content_schema"><code class="docutils literal notranslate"><span class="pre">JSONSchema.content_schema</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.default"><code class="docutils literal notranslate"><span class="pre">JSONSchema.default</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.definitions"><code class="docutils literal notranslate"><span class="pre">JSONSchema.definitions</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.defs"><code class="docutils literal notranslate"><span class="pre">JSONSchema.defs</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.dependencies"><code class="docutils literal notranslate"><span class="pre">JSONSchema.dependencies</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.dependent_required"><code class="docutils literal notranslate"><span class="pre">JSONSchema.dependent_required</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.dependent_schemas"><code class="docutils literal notranslate"><span class="pre">JSONSchema.dependent_schemas</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.deprecated"><code class="docutils literal notranslate"><span class="pre">JSONSchema.deprecated</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.description"><code class="docutils literal notranslate"><span class="pre">JSONSchema.description</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.dynamic_anchor"><code class="docutils literal notranslate"><span class="pre">JSONSchema.dynamic_anchor</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.dynamic_ref"><code class="docutils literal notranslate"><span class="pre">JSONSchema.dynamic_ref</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.else_"><code class="docutils literal notranslate"><span class="pre">JSONSchema.else_</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.enum"><code class="docutils literal notranslate"><span class="pre">JSONSchema.enum</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.examples"><code class="docutils literal notranslate"><span class="pre">JSONSchema.examples</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.exclusive_maximum"><code class="docutils literal notranslate"><span class="pre">JSONSchema.exclusive_maximum</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.exclusive_minimum"><code class="docutils literal notranslate"><span class="pre">JSONSchema.exclusive_minimum</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.format"><code class="docutils literal notranslate"><span class="pre">JSONSchema.format</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.id"><code class="docutils literal notranslate"><span class="pre">JSONSchema.id</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.if_"><code class="docutils literal notranslate"><span class="pre">JSONSchema.if_</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.items"><code class="docutils literal notranslate"><span class="pre">JSONSchema.items</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.max_contains"><code class="docutils literal notranslate"><span class="pre">JSONSchema.max_contains</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.max_items"><code class="docutils literal notranslate"><span class="pre">JSONSchema.max_items</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.max_length"><code class="docutils literal notranslate"><span class="pre">JSONSchema.max_length</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.max_properties"><code class="docutils literal notranslate"><span class="pre">JSONSchema.max_properties</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.maximum"><code class="docutils literal notranslate"><span class="pre">JSONSchema.maximum</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.min_contains"><code class="docutils literal notranslate"><span class="pre">JSONSchema.min_contains</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.min_items"><code class="docutils literal notranslate"><span class="pre">JSONSchema.min_items</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.min_length"><code class="docutils literal notranslate"><span class="pre">JSONSchema.min_length</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.min_properties"><code class="docutils literal notranslate"><span class="pre">JSONSchema.min_properties</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.minimum"><code class="docutils literal notranslate"><span class="pre">JSONSchema.minimum</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.model_config"><code class="docutils literal notranslate"><span class="pre">JSONSchema.model_config</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.multiple_of"><code class="docutils literal notranslate"><span class="pre">JSONSchema.multiple_of</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.not_"><code class="docutils literal notranslate"><span class="pre">JSONSchema.not_</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.one_of"><code class="docutils literal notranslate"><span class="pre">JSONSchema.one_of</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.pattern"><code class="docutils literal notranslate"><span class="pre">JSONSchema.pattern</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.pattern_properties"><code class="docutils literal notranslate"><span class="pre">JSONSchema.pattern_properties</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.prefix_items"><code class="docutils literal notranslate"><span class="pre">JSONSchema.prefix_items</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.properties"><code class="docutils literal notranslate"><span class="pre">JSONSchema.properties</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.property_names"><code class="docutils literal notranslate"><span class="pre">JSONSchema.property_names</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.read_only"><code class="docutils literal notranslate"><span class="pre">JSONSchema.read_only</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.recursive_anchor"><code class="docutils literal notranslate"><span class="pre">JSONSchema.recursive_anchor</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.recursive_ref"><code class="docutils literal notranslate"><span class="pre">JSONSchema.recursive_ref</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.ref"><code class="docutils literal notranslate"><span class="pre">JSONSchema.ref</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.required"><code class="docutils literal notranslate"><span class="pre">JSONSchema.required</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.then"><code class="docutils literal notranslate"><span class="pre">JSONSchema.then</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.title"><code class="docutils literal notranslate"><span class="pre">JSONSchema.title</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.type"><code class="docutils literal notranslate"><span class="pre">JSONSchema.type</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.unevaluated_items"><code class="docutils literal notranslate"><span class="pre">JSONSchema.unevaluated_items</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.unevaluated_properties"><code class="docutils literal notranslate"><span class="pre">JSONSchema.unevaluated_properties</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.unique_items"><code class="docutils literal notranslate"><span class="pre">JSONSchema.unique_items</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.vocabulary"><code class="docutils literal notranslate"><span class="pre">JSONSchema.vocabulary</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.JSONSchema.write_only"><code class="docutils literal notranslate"><span class="pre">JSONSchema.write_only</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guardrails_ai.types.OnFail"><code class="docutils literal notranslate"><span class="pre">OnFail</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.OnFail.REASK"><code class="docutils literal notranslate"><span class="pre">OnFail.REASK</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.OnFail.FIX"><code class="docutils literal notranslate"><span class="pre">OnFail.FIX</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.OnFail.FILTER"><code class="docutils literal notranslate"><span class="pre">OnFail.FILTER</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.OnFail.REFRAIN"><code class="docutils literal notranslate"><span class="pre">OnFail.REFRAIN</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.OnFail.NOOP"><code class="docutils literal notranslate"><span class="pre">OnFail.NOOP</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.OnFail.EXCEPTION"><code class="docutils literal notranslate"><span class="pre">OnFail.EXCEPTION</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.OnFail.FIX_REASK"><code class="docutils literal notranslate"><span class="pre">OnFail.FIX_REASK</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.OnFail.CUSTOM"><code class="docutils literal notranslate"><span class="pre">OnFail.CUSTOM</span></code></a></li>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">OnFail.CUSTOM</span></code></a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">OnFail.EXCEPTION</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">OnFail.FILTER</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">OnFail.FIX</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">OnFail.FIX_REASK</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">OnFail.NOOP</span></code></a></li>
+<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">OnFail.REASK</span></code></a></li>
+<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">OnFail.REFRAIN</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guardrails_ai.types.ReAsk"><code class="docutils literal notranslate"><span class="pre">ReAsk</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.ReAsk.fail_results"><code class="docutils literal notranslate"><span class="pre">ReAsk.fail_results</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ReAsk.incorrect_value"><code class="docutils literal notranslate"><span class="pre">ReAsk.incorrect_value</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ReAsk.model_config"><code class="docutils literal notranslate"><span class="pre">ReAsk.model_config</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome"><code class="docutils literal notranslate"><span class="pre">ValidationOutcome</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome.call_id"><code class="docutils literal notranslate"><span class="pre">ValidationOutcome.call_id</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome.error"><code class="docutils literal notranslate"><span class="pre">ValidationOutcome.error</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome.model_config"><code class="docutils literal notranslate"><span class="pre">ValidationOutcome.model_config</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome.raw_llm_output"><code class="docutils literal notranslate"><span class="pre">ValidationOutcome.raw_llm_output</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome.reask"><code class="docutils literal notranslate"><span class="pre">ValidationOutcome.reask</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome.validated_output"><code class="docutils literal notranslate"><span class="pre">ValidationOutcome.validated_output</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome.validation_passed"><code class="docutils literal notranslate"><span class="pre">ValidationOutcome.validation_passed</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome.validation_summaries"><code class="docutils literal notranslate"><span class="pre">ValidationOutcome.validation_summaries</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationSummary"><code class="docutils literal notranslate"><span class="pre">ValidationSummary</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationSummary.error_spans"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.error_spans</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationSummary.failure_reason"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.failure_reason</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationSummary.model_config"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.model_config</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationSummary.property_path"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.property_path</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationSummary.validator_name"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.validator_name</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationSummary.validator_status"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.validator_status</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guardrails_ai.types.Validator"><code class="docutils literal notranslate"><span class="pre">Validator</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.Validator.args"><code class="docutils literal notranslate"><span class="pre">Validator.args</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.Validator.id"><code class="docutils literal notranslate"><span class="pre">Validator.id</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.Validator.kwargs"><code class="docutils literal notranslate"><span class="pre">Validator.kwargs</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.Validator.model_config"><code class="docutils literal notranslate"><span class="pre">Validator.model_config</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.Validator.on"><code class="docutils literal notranslate"><span class="pre">Validator.on</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.Validator.on_fail"><code class="docutils literal notranslate"><span class="pre">Validator.on_fail</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>

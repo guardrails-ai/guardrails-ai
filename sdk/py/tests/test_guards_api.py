@@ -9,8 +9,7 @@ from httpx import AsyncClient
 
 from guardrails_ai.sdk.guards_api import GuardsApi
 from guardrails_ai.sdk.chat_completions_api import ChatApi, CompletionsApi
-from guardrails_ai.sdk.types import Guard, ValidationOutcome
-from guardrails_ai.sdk.types.guard import CreateGuardRequest
+from guardrails_ai.types import Guard, ValidationOutcome, CreateGuardRequest
 
 
 # ---------------------------------------------------------------------------

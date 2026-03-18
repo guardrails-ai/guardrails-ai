@@ -1,1 +1,5 @@
 pre-commit
+sphinx>=7.0
+sphinx-autoapi>=3.0
+furo>=2024.1
+myst-parser>=3.0
