@@ -6,11 +6,11 @@ install:
 
 # Build HTML docs for all packages from the root docs directory
 docs:
-	sphinx-build -b html docs docs/_build
+	sphinx-build -b html docs-build docs
 
 # Remove generated docs
 docs-clean:
-	rm -rf docs/_build docs/autoapi docs/_packages
+	rm -rf docs docs-build/_build docs-build/autoapi docs-build/_packages
 
 view-docs:
-	open docs/_build/index.html
+	open docs/index.html

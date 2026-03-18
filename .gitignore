@@ -25,4 +25,4 @@ dmypy.json
 # Sphinx Docs
 docs/_packages/
 .doctrees
-docs/_build/_sources
+docs/_sources
