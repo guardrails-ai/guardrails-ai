@@ -16,7 +16,7 @@ dependencies = [
   "pydantic>=2.0.0,<3.0.0",
   "tenacity>=9.0.0",
   "openai>=1",
-  "guardrails-ai-types>=0.4.0a1"
+  "guardrails-ai-types>=0.4.0a2"
 ]
 
 [project.optional-dependencies]
