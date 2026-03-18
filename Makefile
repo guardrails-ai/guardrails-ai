@@ -6,6 +6,8 @@ install:
 
 # Build HTML docs for all packages from the root docs directory
 docs:
+	mkdir -p docs
+	cp docs-build/.nojekyll docs/.nojekyll
 	sphinx-build -b html docs-build docs
 
 # Remove generated docs
