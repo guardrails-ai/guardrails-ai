@@ -29,7 +29,7 @@ build-backend = "setuptools.build_meta"
 
 [project.urls]
 Homepage = "https://guardrailsai.com"
-Documentation = "https://github.com/guardrails-ai/guardrails-ai/blob/main/types/py/docs/_build/markdown/index.md"
+Documentation = "https://guardrails-ai.github.io/guardrails-ai/autoapi/guardrails_ai/types/index.html"
 Repository = "https://github.com/guardrails-ai/guardrails-ai/tree/main/types/py"
 
 
