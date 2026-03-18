@@ -1,4 +1,5 @@
 from typing import Optional, Unpack, overload
+from guardrails_ai.types import ValidationOutcome
 from httpx import AsyncClient
 from guardrails_ai.sdk.abstract_client import Client
 from openai import AsyncClient as AsyncOpenAIClient, AsyncStream
@@ -8,6 +9,14 @@ from openai.types.completion_create_params import (
     CompletionCreateParamsBase,
 )
 from openai.types.chat import ChatCompletion, ChatCompletionChunk
+
+
+class GuardedChatCompletion(ChatCompletion):
+    guardrails: Optional[ValidationOutcome]
+
+
+class GuardedChatCompletionChunk(ChatCompletionChunk):
+    guardrails: Optional[ValidationOutcome]
 
 
 class CompletionsApi(Client):
@@ -33,47 +42,47 @@ class CompletionsApi(Client):
 
     @overload
     async def create(
-        self, guard_name: str, **kwargs: Unpack[CompletionCreateParamsStreaming]
-    ) -> AsyncStream[ChatCompletionChunk]: ...
+        self, guard_id: str, **kwargs: Unpack[CompletionCreateParamsStreaming]
+    ) -> AsyncStream[GuardedChatCompletionChunk]: ...
     @overload
     async def create(
-        self, guard_name: str, **kwargs: Unpack[CompletionCreateParamsNonStreaming]
-    ) -> ChatCompletion: ...
+        self, guard_id: str, **kwargs: Unpack[CompletionCreateParamsNonStreaming]
+    ) -> GuardedChatCompletion: ...
     async def create(
         self,
-        guard_name: str,
+        guard_id: str,
         *,
         stream: Optional[bool] = False,
         **kwargs: Unpack[CompletionCreateParamsBase],
-    ) -> ChatCompletion | AsyncStream[ChatCompletionChunk]:
+    ) -> GuardedChatCompletion | AsyncStream[GuardedChatCompletionChunk]:
         """Create a guarded chat completion.
 
         Proxies the request through the Guardrails API so that the response is
         validated by the named Guard before being returned to the caller.
 
         Args:
-            guard_name: The name of the Guard to apply to the completion.
-            stream: If ``True``, returns an async stream of ``ChatCompletionChunk``
+            guard_id: The unique id of the Guard to apply to the completion.
+            stream: If ``True``, returns an async stream of ``GuardedChatCompletionChunk``
                 objects. Defaults to ``False``.
             **kwargs: Additional keyword arguments forwarded to the OpenAI
                 ``chat.completions.create`` call (e.g. ``model``, ``messages``).
 
         Returns:
-            A ``ChatCompletion`` when ``stream=False``, or an
-            ``AsyncStream[ChatCompletionChunk]`` when ``stream=True``.
+            A ``GuardedChatCompletion`` when ``stream=False``, or an
+            ``AsyncStream[GuardedChatCompletionChunk]`` when ``stream=True``.
 
         Example::
 
             # Non-streaming
             response = await client.guards.chat.completions.create(
-                guard_name="my-guard",
+                guard_id="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",
                 model="gpt-4o-mini",
                 messages=[{"role": "user", "content": "Hello!"}],
             )
 
             # Streaming
             async for chunk in await client.guards.chat.completions.create(
-                guard_name="my-guard",
+                guard_id="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",
                 model="gpt-4o-mini",
                 messages=[{"role": "user", "content": "Hello!"}],
                 stream=True,
@@ -81,7 +90,7 @@ class CompletionsApi(Client):
                 print(chunk)
         """
         openai_client = AsyncOpenAIClient(
-            base_url=f"{self.http_client.base_url}/guards/{guard_name}/openai/v1",
+            base_url=f"{self.http_client.base_url}/guards/{guard_id}/openai/v1",
             http_client=self.http_client,
             max_retries=self.max_retries,
         )
