@@ -43,7 +43,7 @@ class JSONSchema(BaseModel):
     id: str | None = Field(
         default=None, alias="$id", description="URI identifier for the schema"
     )
-    ref: str | None = Field(None, alias="$ref", description="URI reference to a schema")
+    ref: str | None = Field(default=None, alias="$ref", description="URI reference to a schema")
     anchor: str | None = Field(
         default=None,
         alias="$anchor",
@@ -235,7 +235,7 @@ class JSONSchema(BaseModel):
         ge=0,
         description="Minimum number of properties",
     )
-    required: List[str] | None = Field(None, description="Required property names")
+    required: List[str] | None = Field(default=None, description="Required property names")
     dependent_required: Dict[str, List[str]] | None = Field(
         default=None,
         alias="dependentRequired",
