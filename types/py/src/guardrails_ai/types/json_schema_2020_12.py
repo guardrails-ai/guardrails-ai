@@ -38,31 +38,35 @@ class JSONSchema(BaseModel):
     # ========================================================================
 
     schema_: str | None = Field(
-        None, alias="$schema", description="URI of the meta-schema"
+        default=None, alias="$schema", description="URI of the meta-schema"
     )
     id: str | None = Field(
-        None, alias="$id", description="URI identifier for the schema"
+        default=None, alias="$id", description="URI identifier for the schema"
     )
     ref: str | None = Field(None, alias="$ref", description="URI reference to a schema")
     anchor: str | None = Field(
-        None, alias="$anchor", description="Plain name fragment for static referencing"
+        default=None,
+        alias="$anchor",
+        description="Plain name fragment for static referencing",
     )
     dynamic_ref: str | None = Field(
-        None, alias="$dynamicRef", description="Dynamic URI reference"
+        default=None, alias="$dynamicRef", description="Dynamic URI reference"
     )
     dynamic_anchor: str | None = Field(
-        None, alias="$dynamicAnchor", description="Dynamic anchor name"
+        default=None, alias="$dynamicAnchor", description="Dynamic anchor name"
     )
     vocabulary: Dict[str, bool] | None = Field(
-        None,
+        default=None,
         alias="$vocabulary",
         description="Mapping of vocabulary URIs to required (true) or optional (false)",
     )
     comment: str | None = Field(
-        None, alias="$comment", description="Comments for schema authors"
+        default=None, alias="$comment", description="Comments for schema authors"
     )
     defs: Dict[str, SchemaValue] | None = Field(
-        None, alias="$defs", description="Container for reusable schema definitions"
+        default=None,
+        alias="$defs",
+        description="Container for reusable schema definitions",
     )
 
     # ========================================================================
@@ -72,64 +76,71 @@ class JSONSchema(BaseModel):
 
     # Object applicators
     properties: Dict[str, SchemaValue] | None = Field(
-        None, description="Schema for object properties by name"
+        default=None, description="Schema for object properties by name"
     )
     pattern_properties: Dict[str, SchemaValue] | None = Field(
-        None,
+        default=None,
         alias="patternProperties",
         description="Schema for object properties matching regex patterns",
     )
     additional_properties: SchemaValue | None = Field(
-        None,
+        default=None,
         alias="additionalProperties",
         description="Schema for object properties not matched by 'properties' or 'patternProperties'",
     )
     property_names: SchemaValue | None = Field(
-        None,
+        default=None,
         alias="propertyNames",
         description="Schema that all property names must validate against",
     )
 
     # Array applicators
     items: SchemaValue | None = Field(
-        None,
+        default=None,
         description="Schema for array items (all items, or items after prefixItems)",
     )
     prefix_items: List[SchemaValue] | None = Field(
-        None,
+        default=None,
         alias="prefixItems",
         description="Schemas for array items by index (tuple validation)",
     )
     contains: SchemaValue | None = Field(
-        None, description="Schema that at least one array item must validate against"
+        default=None,
+        description="Schema that at least one array item must validate against",
     )
 
     # Conditional applicators
-    if_: SchemaValue | None = Field(None, alias="if", description="Conditional schema")
+    if_: SchemaValue | None = Field(
+        default=None, alias="if", description="Conditional schema"
+    )
     then: SchemaValue | None = Field(
-        None, description="Schema applied if 'if' succeeds"
+        default=None, description="Schema applied if 'if' succeeds"
     )
     else_: SchemaValue | None = Field(
-        None, alias="else", description="Schema applied if 'if' fails"
+        default=None, alias="else", description="Schema applied if 'if' fails"
     )
 
     # Composition applicators
     all_of: List[SchemaValue] | None = Field(
-        None, alias="allOf", description="Must validate against all schemas"
+        default=None, alias="allOf", description="Must validate against all schemas"
     )
     any_of: List[SchemaValue] | None = Field(
-        None, alias="anyOf", description="Must validate against at least one schema"
+        default=None,
+        alias="anyOf",
+        description="Must validate against at least one schema",
     )
     one_of: List[SchemaValue] | None = Field(
-        None, alias="oneOf", description="Must validate against exactly one schema"
+        default=None,
+        alias="oneOf",
+        description="Must validate against exactly one schema",
     )
     not_: SchemaValue | None = Field(
-        None, alias="not", description="Must NOT validate against this schema"
+        default=None, alias="not", description="Must NOT validate against this schema"
     )
 
     # Dependent schemas
     dependent_schemas: Dict[str, SchemaValue] | None = Field(
-        None,
+        default=None,
         alias="dependentSchemas",
         description="Schemas applied when specific properties are present",
     )
@@ -141,63 +152,71 @@ class JSONSchema(BaseModel):
 
     # Any type
     type: StringOrStringArray | None = Field(
-        None,
+        default=None,
         description="Type or types the instance must be (null, boolean, object, array, number, string, integer)",
     )
     enum: List[Any] | None = Field(
-        None, description="Instance must equal one of these values"
+        default=None, description="Instance must equal one of these values"
     )
-    const: Any | None = Field(None, description="Instance must equal this exact value")
+    const: Any | None = Field(
+        default=None, description="Instance must equal this exact value"
+    )
 
     # Numeric
     multiple_of: float | int | None = Field(
-        None,
+        default=None,
         alias="multipleOf",
         gt=0,
         description="Number must be a multiple of this value",
     )
     maximum: float | int | None = Field(
-        None, description="Maximum numeric value (inclusive)"
+        default=None, description="Maximum numeric value (inclusive)"
     )
     exclusive_maximum: float | int | None = Field(
-        None, alias="exclusiveMaximum", description="Maximum numeric value (exclusive)"
+        default=None,
+        alias="exclusiveMaximum",
+        description="Maximum numeric value (exclusive)",
     )
     minimum: float | int | None = Field(
-        None, description="Minimum numeric value (inclusive)"
+        default=None, description="Minimum numeric value (inclusive)"
     )
     exclusive_minimum: float | int | None = Field(
-        None, alias="exclusiveMinimum", description="Minimum numeric value (exclusive)"
+        default=None,
+        alias="exclusiveMinimum",
+        description="Minimum numeric value (exclusive)",
     )
 
     # String
     max_length: int | None = Field(
-        None, alias="maxLength", ge=0, description="Maximum string length"
+        default=None, alias="maxLength", ge=0, description="Maximum string length"
     )
     min_length: int | None = Field(
-        None, alias="minLength", ge=0, description="Minimum string length"
+        default=None, alias="minLength", ge=0, description="Minimum string length"
     )
     pattern: str | None = Field(
-        None, description="Regular expression pattern the string must match"
+        default=None, description="Regular expression pattern the string must match"
     )
 
     # Array
     max_items: int | None = Field(
-        None, alias="maxItems", ge=0, description="Maximum array length"
+        default=None, alias="maxItems", ge=0, description="Maximum array length"
     )
     min_items: int | None = Field(
-        None, alias="minItems", ge=0, description="Minimum array length"
+        default=None, alias="minItems", ge=0, description="Minimum array length"
     )
     unique_items: bool | None = Field(
-        None, alias="uniqueItems", description="Whether array items must be unique"
+        default=None,
+        alias="uniqueItems",
+        description="Whether array items must be unique",
     )
     max_contains: int | None = Field(
-        None,
+        default=None,
         alias="maxContains",
         ge=0,
         description="Maximum number of items that must match 'contains' schema",
     )
     min_contains: int | None = Field(
-        None,
+        default=None,
         alias="minContains",
         ge=0,
         description="Minimum number of items that must match 'contains' schema",
@@ -205,14 +224,20 @@ class JSONSchema(BaseModel):
 
     # Object
     max_properties: int | None = Field(
-        None, alias="maxProperties", ge=0, description="Maximum number of properties"
+        default=None,
+        alias="maxProperties",
+        ge=0,
+        description="Maximum number of properties",
     )
     min_properties: int | None = Field(
-        None, alias="minProperties", ge=0, description="Minimum number of properties"
+        default=None,
+        alias="minProperties",
+        ge=0,
+        description="Minimum number of properties",
     )
     required: List[str] | None = Field(None, description="Required property names")
     dependent_required: Dict[str, List[str]] | None = Field(
-        None,
+        default=None,
         alias="dependentRequired",
         description="Required properties when specific properties are present",
     )
@@ -222,21 +247,23 @@ class JSONSchema(BaseModel):
     # https://json-schema.org/draft/2020-12/vocab/meta-data
     # ========================================================================
 
-    title: str | None = Field(None, description="Short title for the schema")
+    title: str | None = Field(default=None, description="Short title for the schema")
     description: str | None = Field(
-        None, description="Explanation about the purpose of the schema"
+        default=None, description="Explanation about the purpose of the schema"
     )
-    default: Any | None = Field(None, description="Default value")
+    default: Any | None = Field(default=None, description="Default value")
     deprecated: bool | None = Field(
-        None, description="Whether the schema is deprecated"
+        default=None, description="Whether the schema is deprecated"
     )
     read_only: bool | None = Field(
-        None, alias="readOnly", description="Whether the value is read-only"
+        default=None, alias="readOnly", description="Whether the value is read-only"
     )
     write_only: bool | None = Field(
-        None, alias="writeOnly", description="Whether the value is write-only"
+        default=None, alias="writeOnly", description="Whether the value is write-only"
     )
-    examples: List[Any] | None = Field(None, description="Example valid instances")
+    examples: List[Any] | None = Field(
+        default=None, description="Example valid instances"
+    )
 
     # ========================================================================
     # FORMAT ANNOTATION VOCABULARY
@@ -245,7 +272,7 @@ class JSONSchema(BaseModel):
     # ========================================================================
 
     format: str | None = Field(
-        None,
+        default=None,
         description=(
             "Semantic format for string values. Common formats: "
             "date-time, date, time, duration, email, idn-email, hostname, idn-hostname, "
@@ -260,17 +287,19 @@ class JSONSchema(BaseModel):
     # ========================================================================
 
     content_encoding: str | None = Field(
-        None,
+        default=None,
         alias="contentEncoding",
         description="Encoding used for string content (e.g., base64, quoted-printable)",
     )
     content_media_type: str | None = Field(
-        None,
+        default=None,
         alias="contentMediaType",
         description="Media type of string content (e.g., application/json, text/html)",
     )
     content_schema: SchemaValue | None = Field(
-        None, alias="contentSchema", description="Schema for the decoded string content"
+        default=None,
+        alias="contentSchema",
+        description="Schema for the decoded string content",
     )
 
     # ========================================================================
@@ -279,12 +308,12 @@ class JSONSchema(BaseModel):
     # ========================================================================
 
     unevaluated_items: SchemaValue | None = Field(
-        None,
+        default=None,
         alias="unevaluatedItems",
         description="Schema for array items not evaluated by other keywords",
     )
     unevaluated_properties: SchemaValue | None = Field(
-        None,
+        default=None,
         alias="unevaluatedProperties",
         description="Schema for object properties not evaluated by other keywords",
     )
@@ -295,20 +324,22 @@ class JSONSchema(BaseModel):
     # ========================================================================
 
     definitions: Dict[str, SchemaValue] | None = Field(
-        None,
+        default=None,
         description="DEPRECATED: Use $defs instead. Container for reusable schema definitions.",
     )
     dependencies: Dict[str, Union[SchemaValue, List[str]]] | None = Field(
-        None,
+        default=None,
         description="DEPRECATED: Use dependentSchemas and dependentRequired instead.",
     )
     recursive_anchor: bool | None = Field(
-        None,
+        default=None,
         alias="$recursiveAnchor",
         description="DEPRECATED: Use $dynamicAnchor instead.",
     )
     recursive_ref: str | None = Field(
-        None, alias="$recursiveRef", description="DEPRECATED: Use $dynamicRef instead."
+        default=None,
+        alias="$recursiveRef",
+        description="DEPRECATED: Use $dynamicRef instead.",
     )
 
     model_config = {
