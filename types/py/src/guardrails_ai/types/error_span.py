@@ -9,8 +9,8 @@ class ErrorSpan(BaseModel):
     streaming output with varying chunk sizes.
     """
 
-    start: int
-    end: int
+    start: int = Field(description="Starting index relative to the validated chunk.")
+    end: int = Field(description="Ending index relative to the validated chunk.")
     reason: str = Field(
         description="The reason validation failed, specific to this chunk."
     )
