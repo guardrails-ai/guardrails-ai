@@ -29,7 +29,9 @@ class PassResult(ValidationResult):
 
     @field_validator("value_override")
     @classmethod
-    def deserialize_value_override(cls, value_override: Any | None) -> ValueOverrideSentinel | Any | None:
+    def deserialize_value_override(
+        cls, value_override: Any | None
+    ) -> ValueOverrideSentinel | Any | None:
         if value_override is None:
             return cls.ValueOverrideSentinel
         return value_override

@@ -277,7 +277,7 @@ class TestGuardsApiValidate(unittest.IsolatedAsyncioTestCase):
             await api.validate("test-guard", "my content")
 
         call_kwargs = mock_post.call_args.kwargs
-        self.assertEqual(call_kwargs["body"]["llmOutput"], "my content")
+        self.assertEqual(call_kwargs["body"]["llm_output"], "my content")
 
     async def test_passes_guard_name_to_post(self):
         api = make_guards_api()
@@ -424,7 +424,7 @@ class TestGuardsApiValidate(unittest.IsolatedAsyncioTestCase):
             await api.validate("test-guard", "just content")
 
         call_kwargs = mock_post.call_args.kwargs
-        self.assertEqual(call_kwargs["body"], {"llmOutput": "just content"})
+        self.assertEqual(call_kwargs["body"], {"llm_output": "just content"})
 
     async def test_validation_outcome_with_error_field(self):
         api = make_guards_api()

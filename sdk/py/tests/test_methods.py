@@ -141,7 +141,7 @@ class TestPostGuardValidate(unittest.IsolatedAsyncioTestCase):
         client.post.return_value = make_ok_response(outcome_data)
 
         result = await post_guard_validate(
-            client=client, id="g1", body={"llmOutput": "hello"}
+            client=client, id="g1", body={"llm_output": "hello"}
         )
 
         self.assertEqual(result, outcome_data)
@@ -150,10 +150,10 @@ class TestPostGuardValidate(unittest.IsolatedAsyncioTestCase):
         client = make_mock_client()
         client.post.return_value = make_ok_response({})
 
-        await post_guard_validate(client=client, id="g1", body={"llmOutput": "hello"})
+        await post_guard_validate(client=client, id="g1", body={"llm_output": "hello"})
 
         client.post.assert_called_once_with(
-            "/guards/g1/validate", json={"llmOutput": "hello"}
+            "/guards/g1/validate", json={"llm_output": "hello"}
         )
 
     async def test_url_uses_provided_guard_name(self):
@@ -161,15 +161,15 @@ class TestPostGuardValidate(unittest.IsolatedAsyncioTestCase):
         client.post.return_value = make_ok_response({})
 
         await post_guard_validate(
-            client=client, id="another-guard", body={"llmOutput": "world"}
+            client=client, id="another-guard", body={"llm_output": "world"}
         )
 
         client.post.assert_called_once_with(
-            "/guards/another-guard/validate", json={"llmOutput": "world"}
+            "/guards/another-guard/validate", json={"llm_output": "world"}
         )
 
     async def test_sends_body_as_json(self):
-        body = {"llmOutput": "test output", "extra": "param"}
+        body = {"llm_output": "test output", "extra": "param"}
         client = make_mock_client()
         client.post.return_value = make_ok_response({})
 
@@ -183,7 +183,7 @@ class TestPostGuardValidate(unittest.IsolatedAsyncioTestCase):
         client = make_mock_client()
         client.post.return_value = response
 
-        await post_guard_validate(client=client, id="g1", body={"llmOutput": "hello"})
+        await post_guard_validate(client=client, id="g1", body={"llm_output": "hello"})
 
         response.raise_for_status.assert_called_once()
 
@@ -193,7 +193,7 @@ class TestPostGuardValidate(unittest.IsolatedAsyncioTestCase):
 
         with self.assertRaises(httpx.HTTPStatusError):
             await post_guard_validate(
-                client=client, id="missing-guard", body={"llmOutput": "test"}
+                client=client, id="missing-guard", body={"llm_output": "test"}
             )
 
     async def test_raises_http_status_error_on_500(self):
@@ -202,7 +202,7 @@ class TestPostGuardValidate(unittest.IsolatedAsyncioTestCase):
 
         with self.assertRaises(httpx.HTTPStatusError):
             await post_guard_validate(
-                client=client, id="g1", body={"llmOutput": "test"}
+                client=client, id="g1", body={"llm_output": "test"}
             )
 
     async def test_raises_http_status_error_on_422(self):
@@ -211,11 +211,11 @@ class TestPostGuardValidate(unittest.IsolatedAsyncioTestCase):
 
         with self.assertRaises(httpx.HTTPStatusError):
             await post_guard_validate(
-                client=client, id="g1", body={"llmOutput": "test"}
+                client=client, id="g1", body={"llm_output": "test"}
             )
 
     async def test_passes_arbitrary_body_fields(self):
-        body = {"llmOutput": "output", "metadata": {"source": "llm"}, "threshold": 0.9}
+        body = {"llm_output": "output", "metadata": {"source": "llm"}, "threshold": 0.9}
         client = make_mock_client()
         client.post.return_value = make_ok_response({})
 

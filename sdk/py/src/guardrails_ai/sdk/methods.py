@@ -129,7 +129,7 @@ async def post_guard_validate(
     Args:
         client: The async HTTP client to use for the request.
         id: The unique id of the Guard to validate against.
-        body: The request body, including ``llmOutput`` and any additional fields.
+        body: The request body, including ``llm_output`` and any additional fields.
 
     Returns:
         The raw JSON response parsed as a Python object.
