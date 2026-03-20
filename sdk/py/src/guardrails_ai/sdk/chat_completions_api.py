@@ -100,11 +100,11 @@ class CompletionsApi(Client):
         if stream is True:
             return AsyncStream[GuardedChatCompletionChunk](
                 cast_to=GuardedChatCompletionChunk,
-                response=res.response,
+                response=res.response,  # type: ignore - We know res is an AsyncStream and not a ChatCompletion
                 client=openai_client,
             )
         else:
-            return GuardedChatCompletion.model_validate(res.model_dump())
+            return GuardedChatCompletion.model_validate(res.model_dump())  # type: ignore - We know res is a ChatCompletion and not an AsyncStream
 
 
 class ChatApi(Client):
