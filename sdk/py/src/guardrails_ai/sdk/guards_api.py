@@ -165,7 +165,7 @@ class GuardsApi(Client):
         Raises:
             tenacity.RetryError: If all retry attempts are exhausted.
         """
-        body = {"llmOutput": content, **kwargs}
+        body = {"llm_output": content, **kwargs}
         validation_outcome_any: Any = await retry(
             stop=stop_after_attempt(self.max_retries),
             wait=wait_exponential(multiplier=1, min=4, max=60),

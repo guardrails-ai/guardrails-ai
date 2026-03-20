@@ -3,7 +3,7 @@ from guardrails_ai.types import ValidationOutcome
 from httpx import AsyncClient
 from guardrails_ai.sdk.abstract_client import Client
 from openai import AsyncClient as AsyncOpenAIClient, AsyncStream
-from openai.types.completion_create_params import (
+from openai.types.chat.completion_create_params import (
     CompletionCreateParamsStreaming,
     CompletionCreateParamsNonStreaming,
     CompletionCreateParamsBase,
