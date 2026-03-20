@@ -1,7 +1,7 @@
 
 [project]
 name = "guardrails-ai-sdk"
-version = "0.4.0a0"
+version = "0.4.0a1"
 authors = [
     {name = "Guardrails AI", email = "contact@guardrailsai.com"}
 ]
@@ -16,7 +16,7 @@ dependencies = [
   "pydantic>=2.0.0,<3.0.0",
   "tenacity>=9.0.0",
   "openai>=1",
-  "guardrails-ai-types>=0.4.0a2"
+  "guardrails-ai-types>=0.4.0a6"
 ]
 
 [project.optional-dependencies]
