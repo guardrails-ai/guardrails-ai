@@ -8,6 +8,7 @@ from guardrails_ai.types.validation_result import ValidationResult, Outcome
 class FailResult(ValidationResult):
     """The output of a validator when validation fails."""
 
+    outcome: Outcome = Outcome.FAIL
     error_message: str = Field(alias="errorMessage")
     fix_value: Optional[Any] = Field(default=None, alias="fixValue")
     error_spans: Optional[List[ErrorSpan]] = Field(

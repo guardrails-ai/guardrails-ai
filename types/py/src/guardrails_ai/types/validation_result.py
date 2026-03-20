@@ -18,7 +18,7 @@ class ValidationResult(BaseModel):
         description="The outcome of the validation. Must be one of 'pass' or 'fail'."
     )
     metadata: Optional[Dict[str, Any]] = Field(
-        description="The metadata associated with this validation result."
+        default=None, description="The metadata associated with this validation result."
     )
     validated_chunk: Optional[Any] = Field(
         default=None,

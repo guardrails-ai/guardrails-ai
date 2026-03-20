@@ -10,6 +10,8 @@ class PassResult(ValidationResult):
     succeeds.
     """
 
+    outcome: Outcome = Outcome.PASS
+
     class ValueOverrideSentinel:
         pass
 
@@ -19,11 +21,18 @@ class PassResult(ValidationResult):
         description="The value to use as an override if validation passes.",
     )
 
-    @field_serializer("value_override", when_used="json")
+    @field_serializer("value_override")
     def serialize_value_override(self, value_override: Any | None) -> Any | None:
         if value_override is not self.ValueOverrideSentinel:
             return value_override
         return None
+
+    @field_validator("value_override")
+    @classmethod
+    def deserialize_value_override(cls, value_override: Any | None) -> ValueOverrideSentinel | Any | None:
+        if value_override is None:
+            return cls.ValueOverrideSentinel
+        return value_override
 
     @field_validator("outcome")
     @classmethod
