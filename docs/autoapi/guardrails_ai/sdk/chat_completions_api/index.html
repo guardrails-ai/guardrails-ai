@@ -209,8 +209,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../../types/guard/index.html">guardrails_ai.types.guard</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../types/json_schema_2020_12/index.html">guardrails_ai.types.json_schema_2020_12</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../types/on_fail/index.html">guardrails_ai.types.on_fail</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../types/pass_result/index.html">guardrails_ai.types.pass_result</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../types/reask/index.html">guardrails_ai.types.reask</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../types/validation_outcome/index.html">guardrails_ai.types.validation_outcome</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../types/validation_result/index.html">guardrails_ai.types.validation_result</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../types/validation_summary/index.html">guardrails_ai.types.validation_summary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../types/validator/index.html">guardrails_ai.types.validator</a></li>
 </ul>
@@ -270,6 +272,12 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#guardrails_ai.sdk.chat_completions_api.CompletionsApi" title="guardrails_ai.sdk.chat_completions_api.CompletionsApi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompletionsApi</span></code></a></p></td>
 <td><p>Guarded chat completions, mirroring the OpenAI completions API.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion" title="guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GuardedChatCompletion</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletionChunk" title="guardrails_ai.sdk.chat_completions_api.GuardedChatCompletionChunk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GuardedChatCompletionChunk</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -312,38 +320,38 @@
 <p>Accessed via <code class="docutils literal notranslate"><span class="pre">client.guards.chat.completions</span></code>.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="guardrails_ai.sdk.chat_completions_api.CompletionsApi.create">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guard_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unpack</span><span class="p"><span class="pre">[</span></span><span class="pre">openai.types.completion_create_params.CompletionCreateParamsStreaming</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">openai.AsyncStream</span><span class="p"><span class="pre">[</span></span><span class="pre">openai.types.chat.ChatCompletionChunk</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#guardrails_ai.sdk.chat_completions_api.CompletionsApi.create" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guard_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unpack</span><span class="p"><span class="pre">[</span></span><span class="pre">openai.types.chat.completion_create_params.CompletionCreateParamsStreaming</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">openai.AsyncStream</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletionChunk" title="guardrails_ai.sdk.chat_completions_api.GuardedChatCompletionChunk"><span class="pre">GuardedChatCompletionChunk</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#guardrails_ai.sdk.chat_completions_api.CompletionsApi.create" title="Link to this definition">¶</a></dt>
 <dt class="sig sig-object py">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guard_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unpack</span><span class="p"><span class="pre">[</span></span><span class="pre">openai.types.completion_create_params.CompletionCreateParamsNonStreaming</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">openai.types.chat.ChatCompletion</span></span></span></dt>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guard_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unpack</span><span class="p"><span class="pre">[</span></span><span class="pre">openai.types.chat.completion_create_params.CompletionCreateParamsNonStreaming</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion" title="guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion"><span class="pre">GuardedChatCompletion</span></a></span></span></dt>
 <dd><p>Create a guarded chat completion.</p>
 <p>Proxies the request through the Guardrails API so that the response is
 validated by the named Guard before being returned to the caller.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>guard_name</strong> – The name of the Guard to apply to the completion.</p></li>
-<li><p><strong>stream</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, returns an async stream of <code class="docutils literal notranslate"><span class="pre">ChatCompletionChunk</span></code>
+<li><p><strong>guard_id</strong> – The unique id of the Guard to apply to the completion.</p></li>
+<li><p><strong>stream</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, returns an async stream of <code class="docutils literal notranslate"><span class="pre">GuardedChatCompletionChunk</span></code>
 objects. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>**kwargs</strong> – Additional keyword arguments forwarded to the OpenAI
 <code class="docutils literal notranslate"><span class="pre">chat.completions.create</span></code> call (e.g. <code class="docutils literal notranslate"><span class="pre">model</span></code>, <code class="docutils literal notranslate"><span class="pre">messages</span></code>).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">ChatCompletion</span></code> when <code class="docutils literal notranslate"><span class="pre">stream=False</span></code>, or an
-<code class="docutils literal notranslate"><span class="pre">AsyncStream[ChatCompletionChunk]</span></code> when <code class="docutils literal notranslate"><span class="pre">stream=True</span></code>.</p>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">GuardedChatCompletion</span></code> when <code class="docutils literal notranslate"><span class="pre">stream=False</span></code>, or an
+<code class="docutils literal notranslate"><span class="pre">AsyncStream[GuardedChatCompletionChunk]</span></code> when <code class="docutils literal notranslate"><span class="pre">stream=True</span></code>.</p>
 </dd>
 </dl>
 <p>Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Non-streaming</span>
 <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">guards</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-    <span class="n">guard_name</span><span class="o">=</span><span class="s2">&quot;my-guard&quot;</span><span class="p">,</span>
+    <span class="n">guard_id</span><span class="o">=</span><span class="s2">&quot;xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
     <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o-mini&quot;</span><span class="p">,</span>
     <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello!&quot;</span><span class="p">}],</span>
 <span class="p">)</span>
 
 <span class="c1"># Streaming</span>
 <span class="k">async</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">guards</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-    <span class="n">guard_name</span><span class="o">=</span><span class="s2">&quot;my-guard&quot;</span><span class="p">,</span>
+    <span class="n">guard_id</span><span class="o">=</span><span class="s2">&quot;xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
     <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o-mini&quot;</span><span class="p">,</span>
     <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello!&quot;</span><span class="p">}],</span>
     <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -366,6 +374,28 @@ objects. Defaults to <code class="docutils literal notranslate"><span class="pre
 <dl class="py attribute">
 <dt class="sig sig-object py" id="guardrails_ai.sdk.chat_completions_api.CompletionsApi.max_retries">
 <span class="sig-name descname"><span class="pre">max_retries</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><a class="headerlink" href="#guardrails_ai.sdk.chat_completions_api.CompletionsApi.max_retries" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.sdk.chat_completions_api.</span></span><span class="sig-name descname"><span class="pre">GuardedChatCompletion</span></span><a class="headerlink" href="#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">openai.types.chat.ChatCompletion</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion.guardrails">
+<span class="sig-name descname"><span class="pre">guardrails</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../types/index.html#guardrails_ai.types.ValidationOutcome" title="guardrails_ai.types.ValidationOutcome"><span class="pre">guardrails_ai.types.ValidationOutcome</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion.guardrails" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.sdk.chat_completions_api.GuardedChatCompletionChunk">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.sdk.chat_completions_api.</span></span><span class="sig-name descname"><span class="pre">GuardedChatCompletionChunk</span></span><a class="headerlink" href="#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletionChunk" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">openai.types.chat.ChatCompletionChunk</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.sdk.chat_completions_api.GuardedChatCompletionChunk.guardrails">
+<span class="sig-name descname"><span class="pre">guardrails</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../types/index.html#guardrails_ai.types.ValidationOutcome" title="guardrails_ai.types.ValidationOutcome"><span class="pre">guardrails_ai.types.ValidationOutcome</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletionChunk.guardrails" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -443,6 +473,14 @@ objects. Defaults to <code class="docutils literal notranslate"><span class="pre
 <li><a class="reference internal" href="#guardrails_ai.sdk.chat_completions_api.CompletionsApi.headers"><code class="docutils literal notranslate"><span class="pre">CompletionsApi.headers</span></code></a></li>
 <li><a class="reference internal" href="#guardrails_ai.sdk.chat_completions_api.CompletionsApi.http_client"><code class="docutils literal notranslate"><span class="pre">CompletionsApi.http_client</span></code></a></li>
 <li><a class="reference internal" href="#guardrails_ai.sdk.chat_completions_api.CompletionsApi.max_retries"><code class="docutils literal notranslate"><span class="pre">CompletionsApi.max_retries</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion"><code class="docutils literal notranslate"><span class="pre">GuardedChatCompletion</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion.guardrails"><code class="docutils literal notranslate"><span class="pre">GuardedChatCompletion.guardrails</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletionChunk"><code class="docutils literal notranslate"><span class="pre">GuardedChatCompletionChunk</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletionChunk.guardrails"><code class="docutils literal notranslate"><span class="pre">GuardedChatCompletionChunk.guardrails</span></code></a></li>
 </ul>
 </li>
 </ul>

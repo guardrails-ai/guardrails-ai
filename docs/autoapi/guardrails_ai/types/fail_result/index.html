@@ -209,8 +209,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../guard/index.html">guardrails_ai.types.guard</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../json_schema_2020_12/index.html">guardrails_ai.types.json_schema_2020_12</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../on_fail/index.html">guardrails_ai.types.on_fail</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pass_result/index.html">guardrails_ai.types.pass_result</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../reask/index.html">guardrails_ai.types.reask</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../validation_outcome/index.html">guardrails_ai.types.validation_outcome</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../validation_result/index.html">guardrails_ai.types.validation_result</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../validation_summary/index.html">guardrails_ai.types.validation_summary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../validator/index.html">guardrails_ai.types.validator</a></li>
 </ul>
@@ -276,8 +278,13 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="guardrails_ai.types.fail_result.FailResult">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.fail_result.</span></span><span class="sig-name descname"><span class="pre">FailResult</span></span><a class="headerlink" href="#guardrails_ai.types.fail_result.FailResult" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic Validation v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../validation_result/index.html#guardrails_ai.types.validation_result.ValidationResult" title="guardrails_ai.types.validation_result.ValidationResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guardrails_ai.types.validation_result.ValidationResult</span></code></a></p>
 <p>The output of a validator when validation fails.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="guardrails_ai.types.fail_result.FailResult.deserialize_outcome">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">deserialize_outcome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outcome</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="pre">guardrails_ai.types.validation_result.Outcome.FAIL</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#guardrails_ai.types.fail_result.FailResult.deserialize_outcome" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="guardrails_ai.types.fail_result.FailResult.error_message">
 <span class="sig-name descname"><span class="pre">error_message</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#guardrails_ai.types.fail_result.FailResult.error_message" title="Link to this definition">¶</a></dt>
@@ -294,23 +301,8 @@
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.fail_result.FailResult.metadata">
-<span class="sig-name descname"><span class="pre">metadata</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#guardrails_ai.types.fail_result.FailResult.metadata" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.fail_result.FailResult.model_config">
-<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#guardrails_ai.types.fail_result.FailResult.model_config" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="guardrails_ai.types.fail_result.FailResult.outcome">
-<span class="sig-name descname"><span class="pre">outcome</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.fail_result.FailResult.outcome" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.fail_result.FailResult.validated_chunk">
-<span class="sig-name descname"><span class="pre">validated_chunk</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.fail_result.FailResult.validated_chunk" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">outcome</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../validation_result/index.html#guardrails_ai.types.validation_result.Outcome" title="guardrails_ai.types.validation_result.Outcome"><span class="pre">guardrails_ai.types.validation_result.Outcome</span></a></span><a class="headerlink" href="#guardrails_ai.types.fail_result.FailResult.outcome" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -377,13 +369,11 @@
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#guardrails_ai.types.fail_result.FailResult"><code class="docutils literal notranslate"><span class="pre">FailResult</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.fail_result.FailResult.deserialize_outcome"><code class="docutils literal notranslate"><span class="pre">FailResult.deserialize_outcome()</span></code></a></li>
 <li><a class="reference internal" href="#guardrails_ai.types.fail_result.FailResult.error_message"><code class="docutils literal notranslate"><span class="pre">FailResult.error_message</span></code></a></li>
 <li><a class="reference internal" href="#guardrails_ai.types.fail_result.FailResult.error_spans"><code class="docutils literal notranslate"><span class="pre">FailResult.error_spans</span></code></a></li>
 <li><a class="reference internal" href="#guardrails_ai.types.fail_result.FailResult.fix_value"><code class="docutils literal notranslate"><span class="pre">FailResult.fix_value</span></code></a></li>
-<li><a class="reference internal" href="#guardrails_ai.types.fail_result.FailResult.metadata"><code class="docutils literal notranslate"><span class="pre">FailResult.metadata</span></code></a></li>
-<li><a class="reference internal" href="#guardrails_ai.types.fail_result.FailResult.model_config"><code class="docutils literal notranslate"><span class="pre">FailResult.model_config</span></code></a></li>
 <li><a class="reference internal" href="#guardrails_ai.types.fail_result.FailResult.outcome"><code class="docutils literal notranslate"><span class="pre">FailResult.outcome</span></code></a></li>
-<li><a class="reference internal" href="#guardrails_ai.types.fail_result.FailResult.validated_chunk"><code class="docutils literal notranslate"><span class="pre">FailResult.validated_chunk</span></code></a></li>
 </ul>
 </li>
 </ul>

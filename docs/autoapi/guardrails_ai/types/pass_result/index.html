@@ -3,10 +3,10 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../../../genindex.html"><link rel="search" title="Search" href="../../../../search.html"><link rel="next" title="guardrails_ai.types.pass_result" href="../pass_result/index.html"><link rel="prev" title="guardrails_ai.types.json_schema_2020_12" href="../json_schema_2020_12/index.html">
+<link rel="index" title="Index" href="../../../../genindex.html"><link rel="search" title="Search" href="../../../../search.html"><link rel="next" title="guardrails_ai.types.reask" href="../reask/index.html"><link rel="prev" title="guardrails_ai.types.on_fail" href="../on_fail/index.html">
 
     <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
-        <title>guardrails_ai.types.on_fail - Guardrails AI</title>
+        <title>guardrails_ai.types.pass_result - Guardrails AI</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
@@ -208,8 +208,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../fail_result/index.html">guardrails_ai.types.fail_result</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../guard/index.html">guardrails_ai.types.guard</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../json_schema_2020_12/index.html">guardrails_ai.types.json_schema_2020_12</a></li>
-<li class="toctree-l4 current current-page"><a class="current reference internal" href="#">guardrails_ai.types.on_fail</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../pass_result/index.html">guardrails_ai.types.pass_result</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../on_fail/index.html">guardrails_ai.types.on_fail</a></li>
+<li class="toctree-l4 current current-page"><a class="current reference internal" href="#">guardrails_ai.types.pass_result</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../reask/index.html">guardrails_ai.types.reask</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../validation_outcome/index.html">guardrails_ai.types.validation_outcome</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../validation_result/index.html">guardrails_ai.types.validation_result</a></li>
@@ -241,7 +241,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="../../../../_sources/autoapi/guardrails_ai/types/on_fail/index.rst.txt" title="View this page">
+  <a class="muted-link" href="../../../../_sources/autoapi/guardrails_ai/types/pass_result/index.rst.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -259,15 +259,15 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="module-guardrails_ai.types.on_fail">
-<span id="guardrails-ai-types-on-fail"></span><h1>guardrails_ai.types.on_fail<a class="headerlink" href="#module-guardrails_ai.types.on_fail" title="Link to this heading">¶</a></h1>
+          <section id="module-guardrails_ai.types.pass_result">
+<span id="guardrails-ai-types-pass-result"></span><h1>guardrails_ai.types.pass_result<a class="headerlink" href="#module-guardrails_ai.types.pass_result" title="Link to this heading">¶</a></h1>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#guardrails_ai.types.on_fail.OnFail" title="guardrails_ai.types.on_fail.OnFail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OnFail</span></code></a></p></td>
-<td><p>OnFail is an Enum that represents the different actions that can</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guardrails_ai.types.pass_result.PassResult" title="guardrails_ai.types.pass_result.PassResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PassResult</span></code></a></p></td>
+<td><p>PassResult is the output type of Validator.validate when validation</p></td>
 </tr>
 </tbody>
 </table>
@@ -276,141 +276,39 @@
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="guardrails_ai.types.on_fail.OnFail">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.on_fail.</span></span><span class="sig-name descname"><span class="pre">OnFail</span></span><a class="headerlink" href="#guardrails_ai.types.on_fail.OnFail" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
-<p>OnFail is an Enum that represents the different actions that can
-be taken when a validation fails.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.on_fail.OnFail.REASK">
-<span class="sig-name descname"><span class="pre">REASK</span></span><a class="headerlink" href="#guardrails_ai.types.on_fail.OnFail.REASK" title="Link to this definition">¶</a></dt>
-<dd><p>On failure, Reask the LLM.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Literal[“reask”]</p>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="guardrails_ai.types.pass_result.PassResult">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.pass_result.</span></span><span class="sig-name descname"><span class="pre">PassResult</span></span><a class="headerlink" href="#guardrails_ai.types.pass_result.PassResult" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../validation_result/index.html#guardrails_ai.types.validation_result.ValidationResult" title="guardrails_ai.types.validation_result.ValidationResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guardrails_ai.types.validation_result.ValidationResult</span></code></a></p>
+<p>PassResult is the output type of Validator.validate when validation
+succeeds.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.pass_result.PassResult.ValueOverrideSentinel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ValueOverrideSentinel</span></span><a class="headerlink" href="#guardrails_ai.types.pass_result.PassResult.ValueOverrideSentinel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.on_fail.OnFail.FIX">
-<span class="sig-name descname"><span class="pre">FIX</span></span><a class="headerlink" href="#guardrails_ai.types.on_fail.OnFail.FIX" title="Link to this definition">¶</a></dt>
-<dd><p>On failure, apply a static fix.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Literal[“fix”]</p>
-</dd>
-</dl>
-</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="guardrails_ai.types.pass_result.PassResult.deserialize_outcome">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">deserialize_outcome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outcome</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="pre">guardrails_ai.types.validation_result.Outcome.PASS</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#guardrails_ai.types.pass_result.PassResult.deserialize_outcome" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.on_fail.OnFail.FILTER">
-<span class="sig-name descname"><span class="pre">FILTER</span></span><a class="headerlink" href="#guardrails_ai.types.on_fail.OnFail.FILTER" title="Link to this definition">¶</a></dt>
-<dd><p>On failure, filter out the invalid values.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Literal[“filter”]</p>
-</dd>
-</dl>
-</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="guardrails_ai.types.pass_result.PassResult.deserialize_value_override">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">deserialize_value_override</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value_override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#guardrails_ai.types.pass_result.PassResult.ValueOverrideSentinel" title="guardrails_ai.types.pass_result.PassResult.ValueOverrideSentinel"><span class="pre">ValueOverrideSentinel</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#guardrails_ai.types.pass_result.PassResult.deserialize_value_override" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.on_fail.OnFail.REFRAIN">
-<span class="sig-name descname"><span class="pre">REFRAIN</span></span><a class="headerlink" href="#guardrails_ai.types.on_fail.OnFail.REFRAIN" title="Link to this definition">¶</a></dt>
-<dd><p>On failure, refrain from responding;
-return an empty value.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Literal[“refrain”]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.on_fail.OnFail.NOOP">
-<span class="sig-name descname"><span class="pre">NOOP</span></span><a class="headerlink" href="#guardrails_ai.types.on_fail.OnFail.NOOP" title="Link to this definition">¶</a></dt>
-<dd><p>On failure, do nothing.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Literal[“noop”]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.on_fail.OnFail.EXCEPTION">
-<span class="sig-name descname"><span class="pre">EXCEPTION</span></span><a class="headerlink" href="#guardrails_ai.types.on_fail.OnFail.EXCEPTION" title="Link to this definition">¶</a></dt>
-<dd><p>On failure, raise a ValidationError.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Literal[“exception”]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.on_fail.OnFail.FIX_REASK">
-<span class="sig-name descname"><span class="pre">FIX_REASK</span></span><a class="headerlink" href="#guardrails_ai.types.on_fail.OnFail.FIX_REASK" title="Link to this definition">¶</a></dt>
-<dd><p>On failure, apply a static fix,
-check if the fixed value passed validation, if not then reask the LLM.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Literal[“fix_reask”]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.on_fail.OnFail.CUSTOM">
-<span class="sig-name descname"><span class="pre">CUSTOM</span></span><a class="headerlink" href="#guardrails_ai.types.on_fail.OnFail.CUSTOM" title="Link to this definition">¶</a></dt>
-<dd><p>On failure, call a custom function with the
-invalid value and the FailResult’s from any validators run on the value.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Literal[“custom”]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">CUSTOM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'custom'</span></span><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="guardrails_ai.types.pass_result.PassResult.serialize_value_override">
+<span class="sig-name descname"><span class="pre">serialize_value_override</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value_override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#guardrails_ai.types.pass_result.PassResult.serialize_value_override" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id1">
-<span class="sig-name descname"><span class="pre">EXCEPTION</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'exception'</span></span><a class="headerlink" href="#id1" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="guardrails_ai.types.pass_result.PassResult.outcome">
+<span class="sig-name descname"><span class="pre">outcome</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../validation_result/index.html#guardrails_ai.types.validation_result.Outcome" title="guardrails_ai.types.validation_result.Outcome"><span class="pre">guardrails_ai.types.validation_result.Outcome</span></a></span><a class="headerlink" href="#guardrails_ai.types.pass_result.PassResult.outcome" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id2">
-<span class="sig-name descname"><span class="pre">FILTER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'filter'</span></span><a class="headerlink" href="#id2" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id3">
-<span class="sig-name descname"><span class="pre">FIX</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fix'</span></span><a class="headerlink" href="#id3" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id4">
-<span class="sig-name descname"><span class="pre">FIX_REASK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fix_reask'</span></span><a class="headerlink" href="#id4" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id5">
-<span class="sig-name descname"><span class="pre">NOOP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noop'</span></span><a class="headerlink" href="#id5" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id6">
-<span class="sig-name descname"><span class="pre">REASK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reask'</span></span><a class="headerlink" href="#id6" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id7">
-<span class="sig-name descname"><span class="pre">REFRAIN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'refrain'</span></span><a class="headerlink" href="#id7" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="guardrails_ai.types.pass_result.PassResult.value_override">
+<span class="sig-name descname"><span class="pre">value_override</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.pass_result.PassResult.value_override" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -423,23 +321,23 @@ invalid value and the FailResult’s from any validators run on the value.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../pass_result/index.html">
+          <a class="next-page" href="../reask/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">guardrails_ai.types.pass_result</div>
+                <div class="title">guardrails_ai.types.reask</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../json_schema_2020_12/index.html">
+          <a class="prev-page" href="../on_fail/index.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">guardrails_ai.types.json_schema_2020_12</div>
+                <div class="title">guardrails_ai.types.on_fail</div>
                 
               </div>
             </a>
@@ -473,26 +371,16 @@ invalid value and the FailResult’s from any validators run on the value.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">guardrails_ai.types.on_fail</a><ul>
+<li><a class="reference internal" href="#">guardrails_ai.types.pass_result</a><ul>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
-<li><a class="reference internal" href="#guardrails_ai.types.on_fail.OnFail"><code class="docutils literal notranslate"><span class="pre">OnFail</span></code></a><ul>
-<li><a class="reference internal" href="#guardrails_ai.types.on_fail.OnFail.REASK"><code class="docutils literal notranslate"><span class="pre">OnFail.REASK</span></code></a></li>
-<li><a class="reference internal" href="#guardrails_ai.types.on_fail.OnFail.FIX"><code class="docutils literal notranslate"><span class="pre">OnFail.FIX</span></code></a></li>
-<li><a class="reference internal" href="#guardrails_ai.types.on_fail.OnFail.FILTER"><code class="docutils literal notranslate"><span class="pre">OnFail.FILTER</span></code></a></li>
-<li><a class="reference internal" href="#guardrails_ai.types.on_fail.OnFail.REFRAIN"><code class="docutils literal notranslate"><span class="pre">OnFail.REFRAIN</span></code></a></li>
-<li><a class="reference internal" href="#guardrails_ai.types.on_fail.OnFail.NOOP"><code class="docutils literal notranslate"><span class="pre">OnFail.NOOP</span></code></a></li>
-<li><a class="reference internal" href="#guardrails_ai.types.on_fail.OnFail.EXCEPTION"><code class="docutils literal notranslate"><span class="pre">OnFail.EXCEPTION</span></code></a></li>
-<li><a class="reference internal" href="#guardrails_ai.types.on_fail.OnFail.FIX_REASK"><code class="docutils literal notranslate"><span class="pre">OnFail.FIX_REASK</span></code></a></li>
-<li><a class="reference internal" href="#guardrails_ai.types.on_fail.OnFail.CUSTOM"><code class="docutils literal notranslate"><span class="pre">OnFail.CUSTOM</span></code></a></li>
-<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">OnFail.CUSTOM</span></code></a></li>
-<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">OnFail.EXCEPTION</span></code></a></li>
-<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">OnFail.FILTER</span></code></a></li>
-<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">OnFail.FIX</span></code></a></li>
-<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">OnFail.FIX_REASK</span></code></a></li>
-<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">OnFail.NOOP</span></code></a></li>
-<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">OnFail.REASK</span></code></a></li>
-<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">OnFail.REFRAIN</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.pass_result.PassResult"><code class="docutils literal notranslate"><span class="pre">PassResult</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.pass_result.PassResult.ValueOverrideSentinel"><code class="docutils literal notranslate"><span class="pre">PassResult.ValueOverrideSentinel</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.pass_result.PassResult.deserialize_outcome"><code class="docutils literal notranslate"><span class="pre">PassResult.deserialize_outcome()</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.pass_result.PassResult.deserialize_value_override"><code class="docutils literal notranslate"><span class="pre">PassResult.deserialize_value_override()</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.pass_result.PassResult.serialize_value_override"><code class="docutils literal notranslate"><span class="pre">PassResult.serialize_value_override()</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.pass_result.PassResult.outcome"><code class="docutils literal notranslate"><span class="pre">PassResult.outcome</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.pass_result.PassResult.value_override"><code class="docutils literal notranslate"><span class="pre">PassResult.value_override</span></code></a></li>
 </ul>
 </li>
 </ul>

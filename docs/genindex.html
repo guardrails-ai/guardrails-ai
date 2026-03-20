@@ -207,8 +207,10 @@
 <li class="toctree-l4"><a class="reference internal" href="autoapi/guardrails_ai/types/guard/index.html">guardrails_ai.types.guard</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/guardrails_ai/types/json_schema_2020_12/index.html">guardrails_ai.types.json_schema_2020_12</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/guardrails_ai/types/on_fail/index.html">guardrails_ai.types.on_fail</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/guardrails_ai/types/pass_result/index.html">guardrails_ai.types.pass_result</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/guardrails_ai/types/reask/index.html">guardrails_ai.types.reask</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/guardrails_ai/types/validation_outcome/index.html">guardrails_ai.types.validation_outcome</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/guardrails_ai/types/validation_result/index.html">guardrails_ai.types.validation_result</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/guardrails_ai/types/validation_summary/index.html">guardrails_ai.types.validation_summary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/guardrails_ai/types/validator/index.html">guardrails_ai.types.validator</a></li>
 </ul>
@@ -424,8 +426,6 @@
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.JSONSchema.dependent_required">(guardrails_ai.types.JSONSchema attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/guardrails_ai/types/json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.JSONSchema.dependent_schemas">dependent_schemas (guardrails_ai.types.json_schema_2020_12.JSONSchema attribute)</a>
 
         <ul>
@@ -438,6 +438,8 @@
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.JSONSchema.deprecated">(guardrails_ai.types.JSONSchema attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.CreateGuardRequest.description">description (guardrails_ai.types.CreateGuardRequest attribute)</a>
 
         <ul>
@@ -446,6 +448,22 @@
           <li><a href="autoapi/guardrails_ai/types/json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.JSONSchema.description">(guardrails_ai.types.json_schema_2020_12.JSONSchema attribute)</a>
 </li>
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.JSONSchema.description">(guardrails_ai.types.JSONSchema attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/guardrails_ai/types/fail_result/index.html#guardrails_ai.types.fail_result.FailResult.deserialize_outcome">deserialize_outcome() (guardrails_ai.types.fail_result.FailResult class method)</a>
+
+        <ul>
+          <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.FailResult.deserialize_outcome">(guardrails_ai.types.FailResult class method)</a>
+</li>
+          <li><a href="autoapi/guardrails_ai/types/pass_result/index.html#guardrails_ai.types.pass_result.PassResult.deserialize_outcome">(guardrails_ai.types.pass_result.PassResult class method)</a>
+</li>
+          <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.PassResult.deserialize_outcome">(guardrails_ai.types.PassResult class method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/guardrails_ai/types/pass_result/index.html#guardrails_ai.types.pass_result.PassResult.deserialize_value_override">deserialize_value_override() (guardrails_ai.types.pass_result.PassResult class method)</a>
+
+        <ul>
+          <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.PassResult.deserialize_value_override">(guardrails_ai.types.PassResult class method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/guardrails_ai/types/json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.JSONSchema.dynamic_anchor">dynamic_anchor (guardrails_ai.types.json_schema_2020_12.JSONSchema attribute)</a>
@@ -550,6 +568,12 @@
   <h2>F</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.Outcome.FAIL">FAIL (guardrails_ai.types.Outcome attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/guardrails_ai/types/validation_result/index.html#guardrails_ai.types.validation_result.Outcome.FAIL">(guardrails_ai.types.validation_result.Outcome attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.ReAsk.fail_results">fail_results (guardrails_ai.types.ReAsk attribute)</a>
 
         <ul>
@@ -616,6 +640,16 @@
 
         <ul>
           <li><a href="autoapi/guardrails_ai/types/guard/index.html#guardrails_ai.types.guard.Guard">(class in guardrails_ai.types.guard)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/guardrails_ai/sdk/chat_completions_api/index.html#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion">GuardedChatCompletion (class in guardrails_ai.sdk.chat_completions_api)</a>
+</li>
+        <li><a href="autoapi/guardrails_ai/sdk/chat_completions_api/index.html#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletionChunk">GuardedChatCompletionChunk (class in guardrails_ai.sdk.chat_completions_api)</a>
+</li>
+        <li><a href="autoapi/guardrails_ai/sdk/chat_completions_api/index.html#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion.guardrails">guardrails (guardrails_ai.sdk.chat_completions_api.GuardedChatCompletion attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/guardrails_ai/sdk/chat_completions_api/index.html#guardrails_ai.sdk.chat_completions_api.GuardedChatCompletionChunk.guardrails">(guardrails_ai.sdk.chat_completions_api.GuardedChatCompletionChunk attribute)</a>
 </li>
         </ul></li>
         <li>
@@ -712,6 +746,13 @@
 </li>
         </ul></li>
         <li>
+    guardrails_ai.types.pass_result
+
+        <ul>
+          <li><a href="autoapi/guardrails_ai/types/pass_result/index.html#module-guardrails_ai.types.pass_result">module</a>
+</li>
+        </ul></li>
+        <li>
     guardrails_ai.types.reask
 
         <ul>
@@ -723,6 +764,13 @@
 
         <ul>
           <li><a href="autoapi/guardrails_ai/types/validation_outcome/index.html#module-guardrails_ai.types.validation_outcome">module</a>
+</li>
+        </ul></li>
+        <li>
+    guardrails_ai.types.validation_result
+
+        <ul>
+          <li><a href="autoapi/guardrails_ai/types/validation_result/index.html#module-guardrails_ai.types.validation_result">module</a>
 </li>
         </ul></li>
         <li>
@@ -923,10 +971,10 @@
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.JSONSchema.maximum">(guardrails_ai.types.JSONSchema attribute)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/guardrails_ai/types/fail_result/index.html#guardrails_ai.types.fail_result.FailResult.metadata">metadata (guardrails_ai.types.fail_result.FailResult attribute)</a>
+        <li><a href="autoapi/guardrails_ai/types/validation_result/index.html#guardrails_ai.types.validation_result.ValidationResult.metadata">metadata (guardrails_ai.types.validation_result.ValidationResult attribute)</a>
 
         <ul>
-          <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.FailResult.metadata">(guardrails_ai.types.FailResult attribute)</a>
+          <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.ValidationResult.metadata">(guardrails_ai.types.ValidationResult attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/guardrails_ai/types/json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.JSONSchema.min_contains">min_contains (guardrails_ai.types.json_schema_2020_12.JSONSchema attribute)</a>
@@ -966,10 +1014,6 @@
 </li>
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.ErrorSpan.model_config">(guardrails_ai.types.ErrorSpan attribute)</a>
 </li>
-          <li><a href="autoapi/guardrails_ai/types/fail_result/index.html#guardrails_ai.types.fail_result.FailResult.model_config">(guardrails_ai.types.fail_result.FailResult attribute)</a>
-</li>
-          <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.FailResult.model_config">(guardrails_ai.types.FailResult attribute)</a>
-</li>
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.Guard.model_config">(guardrails_ai.types.Guard attribute)</a>
 </li>
           <li><a href="autoapi/guardrails_ai/types/guard/index.html#guardrails_ai.types.guard.CreateGuardRequest.model_config">(guardrails_ai.types.guard.CreateGuardRequest attribute)</a>
@@ -986,9 +1030,13 @@
 </li>
           <li><a href="autoapi/guardrails_ai/types/validation_outcome/index.html#guardrails_ai.types.validation_outcome.ValidationOutcome.model_config">(guardrails_ai.types.validation_outcome.ValidationOutcome attribute)</a>
 </li>
+          <li><a href="autoapi/guardrails_ai/types/validation_result/index.html#guardrails_ai.types.validation_result.ValidationResult.model_config">(guardrails_ai.types.validation_result.ValidationResult attribute)</a>
+</li>
           <li><a href="autoapi/guardrails_ai/types/validation_summary/index.html#guardrails_ai.types.validation_summary.ValidationSummary.model_config">(guardrails_ai.types.validation_summary.ValidationSummary attribute)</a>
 </li>
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.ValidationOutcome.model_config">(guardrails_ai.types.ValidationOutcome attribute)</a>
+</li>
+          <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.ValidationResult.model_config">(guardrails_ai.types.ValidationResult attribute)</a>
 </li>
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.ValidationSummary.model_config">(guardrails_ai.types.ValidationSummary attribute)</a>
 </li>
@@ -1029,9 +1077,13 @@
 </li>
           <li><a href="autoapi/guardrails_ai/types/on_fail/index.html#module-guardrails_ai.types.on_fail">guardrails_ai.types.on_fail</a>
 </li>
+          <li><a href="autoapi/guardrails_ai/types/pass_result/index.html#module-guardrails_ai.types.pass_result">guardrails_ai.types.pass_result</a>
+</li>
           <li><a href="autoapi/guardrails_ai/types/reask/index.html#module-guardrails_ai.types.reask">guardrails_ai.types.reask</a>
 </li>
           <li><a href="autoapi/guardrails_ai/types/validation_outcome/index.html#module-guardrails_ai.types.validation_outcome">guardrails_ai.types.validation_outcome</a>
+</li>
+          <li><a href="autoapi/guardrails_ai/types/validation_result/index.html#module-guardrails_ai.types.validation_result">guardrails_ai.types.validation_result</a>
 </li>
           <li><a href="autoapi/guardrails_ai/types/validation_summary/index.html#module-guardrails_ai.types.validation_summary">guardrails_ai.types.validation_summary</a>
 </li>
@@ -1104,8 +1156,6 @@
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.JSONSchema.one_of">(guardrails_ai.types.JSONSchema attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/guardrails_ai/types/json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.one_of_schema">one_of_schema() (in module guardrails_ai.types.json_schema_2020_12)</a>
 </li>
         <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.OnFail">OnFail (class in guardrails_ai.types)</a>
@@ -1114,12 +1164,28 @@
           <li><a href="autoapi/guardrails_ai/types/on_fail/index.html#guardrails_ai.types.on_fail.OnFail">(class in guardrails_ai.types.on_fail)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/guardrails_ai/types/validation_outcome/index.html#guardrails_ai.types.validation_outcome.OT">OT (in module guardrails_ai.types.validation_outcome)</a>
 </li>
+        <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.Outcome">Outcome (class in guardrails_ai.types)</a>
+
+        <ul>
+          <li><a href="autoapi/guardrails_ai/types/validation_result/index.html#guardrails_ai.types.validation_result.Outcome">(class in guardrails_ai.types.validation_result)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/guardrails_ai/types/fail_result/index.html#guardrails_ai.types.fail_result.FailResult.outcome">outcome (guardrails_ai.types.fail_result.FailResult attribute)</a>
 
         <ul>
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.FailResult.outcome">(guardrails_ai.types.FailResult attribute)</a>
+</li>
+          <li><a href="autoapi/guardrails_ai/types/pass_result/index.html#guardrails_ai.types.pass_result.PassResult.outcome">(guardrails_ai.types.pass_result.PassResult attribute)</a>
+</li>
+          <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.PassResult.outcome">(guardrails_ai.types.PassResult attribute)</a>
+</li>
+          <li><a href="autoapi/guardrails_ai/types/validation_result/index.html#guardrails_ai.types.validation_result.ValidationResult.outcome">(guardrails_ai.types.validation_result.ValidationResult attribute)</a>
+</li>
+          <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.ValidationResult.outcome">(guardrails_ai.types.ValidationResult attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.CreateGuardRequest.output_schema">output_schema (guardrails_ai.types.CreateGuardRequest attribute)</a>
@@ -1136,6 +1202,24 @@
   <h2>P</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.Outcome.PASS">PASS (guardrails_ai.types.Outcome attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/guardrails_ai/types/validation_result/index.html#guardrails_ai.types.validation_result.Outcome.PASS">(guardrails_ai.types.validation_result.Outcome attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.PassResult">PassResult (class in guardrails_ai.types)</a>
+
+        <ul>
+          <li><a href="autoapi/guardrails_ai/types/pass_result/index.html#guardrails_ai.types.pass_result.PassResult">(class in guardrails_ai.types.pass_result)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.PassResult.ValueOverrideSentinel">PassResult.ValueOverrideSentinel (class in guardrails_ai.types)</a>
+
+        <ul>
+          <li><a href="autoapi/guardrails_ai/types/pass_result/index.html#guardrails_ai.types.pass_result.PassResult.ValueOverrideSentinel">(class in guardrails_ai.types.pass_result)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/guardrails_ai/types/json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.JSONSchema.pattern">pattern (guardrails_ai.types.json_schema_2020_12.JSONSchema attribute)</a>
 
         <ul>
@@ -1148,6 +1232,8 @@
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.JSONSchema.pattern_properties">(guardrails_ai.types.JSONSchema attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/guardrails_ai/sdk/methods/index.html#guardrails_ai.sdk.methods.post_guard">post_guard() (in module guardrails_ai.sdk.methods)</a>
 </li>
         <li><a href="autoapi/guardrails_ai/sdk/methods/index.html#guardrails_ai.sdk.methods.post_guard_validate">post_guard_validate() (in module guardrails_ai.sdk.methods)</a>
@@ -1158,8 +1244,6 @@
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.JSONSchema.prefix_items">(guardrails_ai.types.JSONSchema attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/guardrails_ai/types/json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.JSONSchema.properties">properties (guardrails_ai.types.json_schema_2020_12.JSONSchema attribute)</a>
 
         <ul>
@@ -1278,6 +1362,12 @@
         </ul></li>
         <li><a href="autoapi/guardrails_ai/types/json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.SchemaValue">SchemaValue (in module guardrails_ai.types.json_schema_2020_12)</a>
 </li>
+        <li><a href="autoapi/guardrails_ai/types/pass_result/index.html#guardrails_ai.types.pass_result.PassResult.serialize_value_override">serialize_value_override() (guardrails_ai.types.pass_result.PassResult method)</a>
+
+        <ul>
+          <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.PassResult.serialize_value_override">(guardrails_ai.types.PassResult method)</a>
+</li>
+        </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/guardrails_ai/types/error_span/index.html#guardrails_ai.types.error_span.ErrorSpan.start">start (guardrails_ai.types.error_span.ErrorSpan attribute)</a>
@@ -1388,10 +1478,10 @@
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.JSONSchema.validate_type">(guardrails_ai.types.JSONSchema class method)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/guardrails_ai/types/fail_result/index.html#guardrails_ai.types.fail_result.FailResult.validated_chunk">validated_chunk (guardrails_ai.types.fail_result.FailResult attribute)</a>
+        <li><a href="autoapi/guardrails_ai/types/validation_result/index.html#guardrails_ai.types.validation_result.ValidationResult.validated_chunk">validated_chunk (guardrails_ai.types.validation_result.ValidationResult attribute)</a>
 
         <ul>
-          <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.FailResult.validated_chunk">(guardrails_ai.types.FailResult attribute)</a>
+          <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.ValidationResult.validated_chunk">(guardrails_ai.types.ValidationResult attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/guardrails_ai/types/validation_outcome/index.html#guardrails_ai.types.validation_outcome.ValidationOutcome.validated_output">validated_output (guardrails_ai.types.validation_outcome.ValidationOutcome attribute)</a>
@@ -1406,18 +1496,24 @@
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.ValidationOutcome.validation_passed">(guardrails_ai.types.ValidationOutcome attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/guardrails_ai/types/validation_outcome/index.html#guardrails_ai.types.validation_outcome.ValidationOutcome.validation_summaries">validation_summaries (guardrails_ai.types.validation_outcome.ValidationOutcome attribute)</a>
 
         <ul>
           <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.ValidationOutcome.validation_summaries">(guardrails_ai.types.ValidationOutcome attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.ValidationOutcome">ValidationOutcome (class in guardrails_ai.types)</a>
 
         <ul>
           <li><a href="autoapi/guardrails_ai/types/validation_outcome/index.html#guardrails_ai.types.validation_outcome.ValidationOutcome">(class in guardrails_ai.types.validation_outcome)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.ValidationResult">ValidationResult (class in guardrails_ai.types)</a>
+
+        <ul>
+          <li><a href="autoapi/guardrails_ai/types/validation_result/index.html#guardrails_ai.types.validation_result.ValidationResult">(class in guardrails_ai.types.validation_result)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.ValidationSummary">ValidationSummary (class in guardrails_ai.types)</a>
@@ -1448,6 +1544,12 @@
 
         <ul>
           <li><a href="autoapi/guardrails_ai/types/guard/index.html#guardrails_ai.types.guard.CreateGuardRequest.validators">(guardrails_ai.types.guard.CreateGuardRequest attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/guardrails_ai/types/pass_result/index.html#guardrails_ai.types.pass_result.PassResult.value_override">value_override (guardrails_ai.types.pass_result.PassResult attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/guardrails_ai/types/index.html#guardrails_ai.types.PassResult.value_override">(guardrails_ai.types.PassResult attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/guardrails_ai/types/json_schema_2020_12/index.html#guardrails_ai.types.json_schema_2020_12.JSONSchema.vocabulary">vocabulary (guardrails_ai.types.json_schema_2020_12.JSONSchema attribute)</a>

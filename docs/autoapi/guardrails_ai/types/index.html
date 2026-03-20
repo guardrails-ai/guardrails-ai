@@ -209,8 +209,10 @@
 <li class="toctree-l4"><a class="reference internal" href="guard/index.html">guardrails_ai.types.guard</a></li>
 <li class="toctree-l4"><a class="reference internal" href="json_schema_2020_12/index.html">guardrails_ai.types.json_schema_2020_12</a></li>
 <li class="toctree-l4"><a class="reference internal" href="on_fail/index.html">guardrails_ai.types.on_fail</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pass_result/index.html">guardrails_ai.types.pass_result</a></li>
 <li class="toctree-l4"><a class="reference internal" href="reask/index.html">guardrails_ai.types.reask</a></li>
 <li class="toctree-l4"><a class="reference internal" href="validation_outcome/index.html">guardrails_ai.types.validation_outcome</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validation_result/index.html">guardrails_ai.types.validation_result</a></li>
 <li class="toctree-l4"><a class="reference internal" href="validation_summary/index.html">guardrails_ai.types.validation_summary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="validator/index.html">guardrails_ai.types.validator</a></li>
 </ul>
@@ -268,8 +270,10 @@
 <li class="toctree-l1"><a class="reference internal" href="guard/index.html">guardrails_ai.types.guard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="json_schema_2020_12/index.html">guardrails_ai.types.json_schema_2020_12</a></li>
 <li class="toctree-l1"><a class="reference internal" href="on_fail/index.html">guardrails_ai.types.on_fail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pass_result/index.html">guardrails_ai.types.pass_result</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reask/index.html">guardrails_ai.types.reask</a></li>
 <li class="toctree-l1"><a class="reference internal" href="validation_outcome/index.html">guardrails_ai.types.validation_outcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="validation_result/index.html">guardrails_ai.types.validation_result</a></li>
 <li class="toctree-l1"><a class="reference internal" href="validation_summary/index.html">guardrails_ai.types.validation_summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="validator/index.html">guardrails_ai.types.validator</a></li>
 </ul>
@@ -298,16 +302,25 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#guardrails_ai.types.OnFail" title="guardrails_ai.types.OnFail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OnFail</span></code></a></p></td>
 <td><p>OnFail is an Enum that represents the different actions that can</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guardrails_ai.types.Outcome" title="guardrails_ai.types.Outcome"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Outcome</span></code></a></p></td>
+<td><p>str(object='') -&gt; str</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#guardrails_ai.types.PassResult" title="guardrails_ai.types.PassResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PassResult</span></code></a></p></td>
+<td><p>PassResult is the output type of Validator.validate when validation</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#guardrails_ai.types.ReAsk" title="guardrails_ai.types.ReAsk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReAsk</span></code></a></p></td>
 <td><p>Represents a pending reask when validation fails and retries are exhausted.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome" title="guardrails_ai.types.ValidationOutcome"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidationOutcome</span></code></a></p></td>
 <td><p>The output from a Guard execution.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#guardrails_ai.types.ValidationSummary" title="guardrails_ai.types.ValidationSummary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidationSummary</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guardrails_ai.types.ValidationResult" title="guardrails_ai.types.ValidationResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidationResult</span></code></a></p></td>
+<td><p>ValidationResult is the output type of Validator.validate and the</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#guardrails_ai.types.ValidationSummary" title="guardrails_ai.types.ValidationSummary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidationSummary</span></code></a></p></td>
 <td><p>Per-validator result produced during a Guard execution.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#guardrails_ai.types.Validator" title="guardrails_ai.types.Validator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Validator</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guardrails_ai.types.Validator" title="guardrails_ai.types.Validator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Validator</span></code></a></p></td>
 <td><p>A validator attached to a Guard, including its configuration.</p></td>
 </tr>
 </tbody>
@@ -380,8 +393,13 @@ streaming output with varying chunk sizes.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="guardrails_ai.types.FailResult">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">FailResult</span></span><a class="headerlink" href="#guardrails_ai.types.FailResult" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic Validation v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="validation_result/index.html#guardrails_ai.types.validation_result.ValidationResult" title="guardrails_ai.types.validation_result.ValidationResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guardrails_ai.types.validation_result.ValidationResult</span></code></a></p>
 <p>The output of a validator when validation fails.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="guardrails_ai.types.FailResult.deserialize_outcome">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">deserialize_outcome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outcome</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="pre">guardrails_ai.types.validation_result.Outcome.FAIL</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#guardrails_ai.types.FailResult.deserialize_outcome" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="guardrails_ai.types.FailResult.error_message">
 <span class="sig-name descname"><span class="pre">error_message</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#guardrails_ai.types.FailResult.error_message" title="Link to this definition">¶</a></dt>
@@ -398,23 +416,8 @@ streaming output with varying chunk sizes.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.FailResult.metadata">
-<span class="sig-name descname"><span class="pre">metadata</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#guardrails_ai.types.FailResult.metadata" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.FailResult.model_config">
-<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#guardrails_ai.types.FailResult.model_config" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="guardrails_ai.types.FailResult.outcome">
-<span class="sig-name descname"><span class="pre">outcome</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.FailResult.outcome" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="guardrails_ai.types.FailResult.validated_chunk">
-<span class="sig-name descname"><span class="pre">validated_chunk</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.FailResult.validated_chunk" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">outcome</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="validation_result/index.html#guardrails_ai.types.validation_result.Outcome" title="guardrails_ai.types.validation_result.Outcome"><span class="pre">guardrails_ai.types.validation_result.Outcome</span></a></span><a class="headerlink" href="#guardrails_ai.types.FailResult.outcome" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -929,6 +932,70 @@ invalid value and the FailResult’s from any validators run on the value.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.Outcome">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">Outcome</span></span><a class="headerlink" href="#guardrails_ai.types.Outcome" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<p>str(object=’’) -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to ‘utf-8’.
+errors defaults to ‘strict’.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.Outcome.FAIL">
+<span class="sig-name descname"><span class="pre">FAIL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fail'</span></span><a class="headerlink" href="#guardrails_ai.types.Outcome.FAIL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.Outcome.PASS">
+<span class="sig-name descname"><span class="pre">PASS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pass'</span></span><a class="headerlink" href="#guardrails_ai.types.Outcome.PASS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.PassResult">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">PassResult</span></span><a class="headerlink" href="#guardrails_ai.types.PassResult" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="validation_result/index.html#guardrails_ai.types.validation_result.ValidationResult" title="guardrails_ai.types.validation_result.ValidationResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guardrails_ai.types.validation_result.ValidationResult</span></code></a></p>
+<p>PassResult is the output type of Validator.validate when validation
+succeeds.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.PassResult.ValueOverrideSentinel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ValueOverrideSentinel</span></span><a class="headerlink" href="#guardrails_ai.types.PassResult.ValueOverrideSentinel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="guardrails_ai.types.PassResult.deserialize_outcome">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">deserialize_outcome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outcome</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="pre">guardrails_ai.types.validation_result.Outcome.PASS</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#guardrails_ai.types.PassResult.deserialize_outcome" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="guardrails_ai.types.PassResult.deserialize_value_override">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">deserialize_value_override</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value_override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#guardrails_ai.types.PassResult.ValueOverrideSentinel" title="guardrails_ai.types.PassResult.ValueOverrideSentinel"><span class="pre">ValueOverrideSentinel</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#guardrails_ai.types.PassResult.deserialize_value_override" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="guardrails_ai.types.PassResult.serialize_value_override">
+<span class="sig-name descname"><span class="pre">serialize_value_override</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value_override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#guardrails_ai.types.PassResult.serialize_value_override" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.PassResult.outcome">
+<span class="sig-name descname"><span class="pre">outcome</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="validation_result/index.html#guardrails_ai.types.validation_result.Outcome" title="guardrails_ai.types.validation_result.Outcome"><span class="pre">guardrails_ai.types.validation_result.Outcome</span></a></span><a class="headerlink" href="#guardrails_ai.types.PassResult.outcome" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.PassResult.value_override">
+<span class="sig-name descname"><span class="pre">value_override</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.PassResult.value_override" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="guardrails_ai.types.ReAsk">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">ReAsk</span></span><a class="headerlink" href="#guardrails_ai.types.ReAsk" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic Validation v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
@@ -995,6 +1062,34 @@ shape of <code class="docutils literal notranslate"><span class="pre">validated_
 <dl class="py attribute">
 <dt class="sig sig-object py" id="guardrails_ai.types.ValidationOutcome.validation_summaries">
 <span class="sig-name descname"><span class="pre">validation_summaries</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="validation_summary/index.html#guardrails_ai.types.validation_summary.ValidationSummary" title="guardrails_ai.types.validation_summary.ValidationSummary"><span class="pre">guardrails_ai.types.validation_summary.ValidationSummary</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationOutcome.validation_summaries" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationResult">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">guardrails_ai.types.</span></span><span class="sig-name descname"><span class="pre">ValidationResult</span></span><a class="headerlink" href="#guardrails_ai.types.ValidationResult" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic Validation v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
+<p>ValidationResult is the output type of Validator.validate and the
+abstract base class for all validation results.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationResult.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationResult.metadata" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationResult.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#guardrails_ai.types.ValidationResult.model_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationResult.outcome">
+<span class="sig-name descname"><span class="pre">outcome</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#guardrails_ai.types.Outcome" title="guardrails_ai.types.Outcome"><span class="pre">Outcome</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationResult.outcome" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="guardrails_ai.types.ValidationResult.validated_chunk">
+<span class="sig-name descname"><span class="pre">validated_chunk</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#guardrails_ai.types.ValidationResult.validated_chunk" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1151,13 +1246,11 @@ shape of <code class="docutils literal notranslate"><span class="pre">validated_
 </ul>
 </li>
 <li><a class="reference internal" href="#guardrails_ai.types.FailResult"><code class="docutils literal notranslate"><span class="pre">FailResult</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.FailResult.deserialize_outcome"><code class="docutils literal notranslate"><span class="pre">FailResult.deserialize_outcome()</span></code></a></li>
 <li><a class="reference internal" href="#guardrails_ai.types.FailResult.error_message"><code class="docutils literal notranslate"><span class="pre">FailResult.error_message</span></code></a></li>
 <li><a class="reference internal" href="#guardrails_ai.types.FailResult.error_spans"><code class="docutils literal notranslate"><span class="pre">FailResult.error_spans</span></code></a></li>
 <li><a class="reference internal" href="#guardrails_ai.types.FailResult.fix_value"><code class="docutils literal notranslate"><span class="pre">FailResult.fix_value</span></code></a></li>
-<li><a class="reference internal" href="#guardrails_ai.types.FailResult.metadata"><code class="docutils literal notranslate"><span class="pre">FailResult.metadata</span></code></a></li>
-<li><a class="reference internal" href="#guardrails_ai.types.FailResult.model_config"><code class="docutils literal notranslate"><span class="pre">FailResult.model_config</span></code></a></li>
 <li><a class="reference internal" href="#guardrails_ai.types.FailResult.outcome"><code class="docutils literal notranslate"><span class="pre">FailResult.outcome</span></code></a></li>
-<li><a class="reference internal" href="#guardrails_ai.types.FailResult.validated_chunk"><code class="docutils literal notranslate"><span class="pre">FailResult.validated_chunk</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#guardrails_ai.types.Guard"><code class="docutils literal notranslate"><span class="pre">Guard</span></code></a><ul>
@@ -1254,6 +1347,20 @@ shape of <code class="docutils literal notranslate"><span class="pre">validated_
 <li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">OnFail.REFRAIN</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#guardrails_ai.types.Outcome"><code class="docutils literal notranslate"><span class="pre">Outcome</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.Outcome.FAIL"><code class="docutils literal notranslate"><span class="pre">Outcome.FAIL</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.Outcome.PASS"><code class="docutils literal notranslate"><span class="pre">Outcome.PASS</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guardrails_ai.types.PassResult"><code class="docutils literal notranslate"><span class="pre">PassResult</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.PassResult.ValueOverrideSentinel"><code class="docutils literal notranslate"><span class="pre">PassResult.ValueOverrideSentinel</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.PassResult.deserialize_outcome"><code class="docutils literal notranslate"><span class="pre">PassResult.deserialize_outcome()</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.PassResult.deserialize_value_override"><code class="docutils literal notranslate"><span class="pre">PassResult.deserialize_value_override()</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.PassResult.serialize_value_override"><code class="docutils literal notranslate"><span class="pre">PassResult.serialize_value_override()</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.PassResult.outcome"><code class="docutils literal notranslate"><span class="pre">PassResult.outcome</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.PassResult.value_override"><code class="docutils literal notranslate"><span class="pre">PassResult.value_override</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#guardrails_ai.types.ReAsk"><code class="docutils literal notranslate"><span class="pre">ReAsk</span></code></a><ul>
 <li><a class="reference internal" href="#guardrails_ai.types.ReAsk.fail_results"><code class="docutils literal notranslate"><span class="pre">ReAsk.fail_results</span></code></a></li>
 <li><a class="reference internal" href="#guardrails_ai.types.ReAsk.incorrect_value"><code class="docutils literal notranslate"><span class="pre">ReAsk.incorrect_value</span></code></a></li>
@@ -1269,6 +1376,13 @@ shape of <code class="docutils literal notranslate"><span class="pre">validated_
 <li><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome.validated_output"><code class="docutils literal notranslate"><span class="pre">ValidationOutcome.validated_output</span></code></a></li>
 <li><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome.validation_passed"><code class="docutils literal notranslate"><span class="pre">ValidationOutcome.validation_passed</span></code></a></li>
 <li><a class="reference internal" href="#guardrails_ai.types.ValidationOutcome.validation_summaries"><code class="docutils literal notranslate"><span class="pre">ValidationOutcome.validation_summaries</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationResult"><code class="docutils literal notranslate"><span class="pre">ValidationResult</span></code></a><ul>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationResult.metadata"><code class="docutils literal notranslate"><span class="pre">ValidationResult.metadata</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationResult.model_config"><code class="docutils literal notranslate"><span class="pre">ValidationResult.model_config</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationResult.outcome"><code class="docutils literal notranslate"><span class="pre">ValidationResult.outcome</span></code></a></li>
+<li><a class="reference internal" href="#guardrails_ai.types.ValidationResult.validated_chunk"><code class="docutils literal notranslate"><span class="pre">ValidationResult.validated_chunk</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#guardrails_ai.types.ValidationSummary"><code class="docutils literal notranslate"><span class="pre">ValidationSummary</span></code></a><ul>
