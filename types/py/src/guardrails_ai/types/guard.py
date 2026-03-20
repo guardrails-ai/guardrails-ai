@@ -14,7 +14,7 @@ class CreateGuardRequest(BaseModel):
         description="A description that concisely states the expected behaviour or purpose of the Guard.",
     )
     validators: List[Validator] = Field(default_factory=list)
-    output_schema: JSONSchema = Field(default=string_schema())
+    output_schema: JSONSchema = Field(default_factory=string_schema)
 
     model_config = {"validate_by_alias": True, "validate_by_name": True}
 
