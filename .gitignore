@@ -23,6 +23,6 @@ dmypy.json
 /.coverage
 
 # Sphinx Docs
-docs/_packages/
+docs-build/_packages
 .doctrees
-docs/_sources
+docs
