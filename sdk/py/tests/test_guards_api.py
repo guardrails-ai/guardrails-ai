@@ -1,14 +1,15 @@
 """
-Unit tests for guardrails_ai.sdk.guards_api (GuardsApi, ChatApi, CompletionsApi).
+Unit tests for guardrails_ai.sdk.guards_api
 """
 
 import unittest
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, patch
 
 from httpx import AsyncClient
 
-from guardrails_ai.sdk.guards_api import CompletionsApi, ChatApi, GuardsApi
-from guardrails_ai.sdk.types import Guard, ValidationOutcome
+from guardrails_ai.sdk.guards_api import GuardsApi
+from guardrails_ai.sdk.chat_completions_api import ChatApi, CompletionsApi
+from guardrails_ai.types import Guard, ValidationOutcome, CreateGuardRequest
 
 
 # ---------------------------------------------------------------------------
@@ -43,188 +44,6 @@ def make_guards_api(max_retries: int = 1) -> GuardsApi:
         headers={"x-guardrailsai-api-key": "test-key"},
         max_retries=max_retries,
     )
-
-
-# ---------------------------------------------------------------------------
-# CompletionsApi
-# ---------------------------------------------------------------------------
-
-
-class TestCompletionsApiInit(unittest.TestCase):
-    def test_stores_http_client(self):
-        http_client = make_http_client()
-        api = CompletionsApi(
-            http_client=http_client,
-            headers={"x-guardrailsai-api-key": "key"},
-            max_retries=3,
-        )
-        self.assertIs(api.http_client, http_client)
-
-    def test_stores_headers(self):
-        headers = {"x-guardrailsai-api-key": "key", "x-custom": "value"}
-        api = CompletionsApi(
-            http_client=make_http_client(),
-            headers=headers,
-            max_retries=3,
-        )
-        self.assertEqual(api.headers, headers)
-
-    def test_stores_max_retries(self):
-        api = CompletionsApi(
-            http_client=make_http_client(),
-            headers={},
-            max_retries=7,
-        )
-        self.assertEqual(api.max_retries, 7)
-
-
-class TestCompletionsApiCreate(unittest.IsolatedAsyncioTestCase):
-    async def test_create_instantiates_openai_client_with_guard_base_url(self):
-        http_client = make_http_client()
-        api = CompletionsApi(
-            http_client=http_client,
-            headers={"x-guardrailsai-api-key": "key"},
-            max_retries=2,
-        )
-
-        mock_chat_completion = MagicMock()
-        mock_openai_instance = MagicMock()
-        mock_openai_instance.chat.completions.create = AsyncMock(
-            return_value=mock_chat_completion
-        )
-
-        with patch(
-            "guardrails_ai.sdk.guards_api.AsyncOpenAIClient",
-            return_value=mock_openai_instance,
-        ) as MockOpenAIClient:
-            result = await api.create(
-                "my-guard",
-                model="gpt-4",
-                messages=[{"role": "user", "content": "hello"}],
-            )
-
-        MockOpenAIClient.assert_called_once_with(
-            base_url=f"{http_client.base_url}/guards/my-guard/openai/v1",
-            http_client=http_client,
-            max_retries=2,
-        )
-        self.assertIs(result, mock_chat_completion)
-
-    async def test_create_passes_kwargs_to_openai_create(self):
-        http_client = make_http_client()
-        api = CompletionsApi(
-            http_client=http_client,
-            headers={},
-            max_retries=1,
-        )
-
-        mock_openai_instance = MagicMock()
-        mock_openai_instance.chat.completions.create = AsyncMock(return_value=None)
-
-        with patch(
-            "guardrails_ai.sdk.guards_api.AsyncOpenAIClient",
-            return_value=mock_openai_instance,
-        ):
-            await api.create(
-                "my-guard",
-                model="gpt-4",
-                messages=[{"role": "user", "content": "hello"}],
-                temperature=0.5,
-            )
-
-        mock_openai_instance.chat.completions.create.assert_called_once_with(
-            stream=False,
-            model="gpt-4",
-            messages=[{"role": "user", "content": "hello"}],
-            temperature=0.5,
-        )
-
-    async def test_create_uses_correct_guard_name_in_url(self):
-        http_client = make_http_client()
-        api = CompletionsApi(
-            http_client=http_client,
-            headers={},
-            max_retries=1,
-        )
-
-        mock_openai_instance = MagicMock()
-        mock_openai_instance.chat.completions.create = AsyncMock(return_value=None)
-
-        with patch(
-            "guardrails_ai.sdk.guards_api.AsyncOpenAIClient",
-            return_value=mock_openai_instance,
-        ) as MockOpenAIClient:
-            await api.create("special-guard", model="gpt-4", messages=[])
-
-        call_kwargs = MockOpenAIClient.call_args.kwargs
-        self.assertIn("special-guard", call_kwargs["base_url"])
-
-
-# ---------------------------------------------------------------------------
-# ChatApi
-# ---------------------------------------------------------------------------
-
-
-class TestChatApiInit(unittest.TestCase):
-    def test_stores_http_client(self):
-        http_client = make_http_client()
-        api = ChatApi(
-            http_client=http_client,
-            headers={},
-            max_retries=1,
-        )
-        self.assertIs(api.http_client, http_client)
-
-    def test_stores_headers(self):
-        headers = {"x-key": "val"}
-        api = ChatApi(
-            http_client=make_http_client(),
-            headers=headers,
-            max_retries=1,
-        )
-        self.assertEqual(api.headers, headers)
-
-    def test_stores_max_retries(self):
-        api = ChatApi(
-            http_client=make_http_client(),
-            headers={},
-            max_retries=4,
-        )
-        self.assertEqual(api.max_retries, 4)
-
-    def test_completions_api_initialized(self):
-        api = ChatApi(
-            http_client=make_http_client(),
-            headers={},
-            max_retries=1,
-        )
-        self.assertIsInstance(api.completions, CompletionsApi)
-
-    def test_completions_api_shares_http_client(self):
-        http_client = make_http_client()
-        api = ChatApi(
-            http_client=http_client,
-            headers={},
-            max_retries=1,
-        )
-        self.assertIs(api.completions.http_client, http_client)
-
-    def test_completions_api_shares_headers(self):
-        headers = {"x-key": "val"}
-        api = ChatApi(
-            http_client=make_http_client(),
-            headers=headers,
-            max_retries=1,
-        )
-        self.assertEqual(api.completions.headers, headers)
-
-    def test_completions_api_shares_max_retries(self):
-        api = ChatApi(
-            http_client=make_http_client(),
-            headers={},
-            max_retries=9,
-        )
-        self.assertEqual(api.completions.max_retries, 9)
 
 
 # ---------------------------------------------------------------------------
@@ -308,7 +127,7 @@ class TestGuardsApiRetrieve(unittest.IsolatedAsyncioTestCase):
             new_callable=AsyncMock,
             return_value=GUARD_DATA,
         ):
-            result = await api.retrieve("test-guard")
+            result = await api.retrieve("g1")
 
         self.assertIsInstance(result, Guard)
         self.assertEqual(result.id, "g1")
@@ -322,10 +141,10 @@ class TestGuardsApiRetrieve(unittest.IsolatedAsyncioTestCase):
             new_callable=AsyncMock,
             return_value=GUARD_DATA,
         ) as mock_get:
-            await api.retrieve("my-guard")
+            await api.retrieve("g1")
 
         call_kwargs = mock_get.call_args.kwargs
-        self.assertEqual(call_kwargs["name"], "my-guard")
+        self.assertEqual(call_kwargs["id"], "g1")
 
     async def test_passes_http_client_to_get_guard(self):
         http_client = make_http_client()
@@ -340,7 +159,7 @@ class TestGuardsApiRetrieve(unittest.IsolatedAsyncioTestCase):
             new_callable=AsyncMock,
             return_value=GUARD_DATA,
         ) as mock_get:
-            await api.retrieve("test-guard")
+            await api.retrieve("g1")
 
         call_kwargs = mock_get.call_args.kwargs
         self.assertIs(call_kwargs["client"], http_client)
@@ -366,7 +185,7 @@ class TestGuardsApiRetrieve(unittest.IsolatedAsyncioTestCase):
             new_callable=AsyncMock,
             return_value=guard_data,
         ):
-            result = await api.retrieve("another-guard")
+            result = await api.retrieve("g2")
 
         self.assertIsInstance(result, Guard)
         self.assertEqual(len(result.validators), 1)
@@ -388,7 +207,7 @@ class TestGuardsApiRetrieve(unittest.IsolatedAsyncioTestCase):
                 new_callable=AsyncMock,
                 side_effect=[Exception("transient error"), GUARD_DATA],
             ) as mock_get:
-                result = await api.retrieve("test-guard")
+                result = await api.retrieve("g1")
 
         self.assertEqual(mock_get.call_count, 2)
         self.assertIsInstance(result, Guard)
@@ -410,7 +229,7 @@ class TestGuardsApiRetrieve(unittest.IsolatedAsyncioTestCase):
                 side_effect=Exception("always fails"),
             ) as mock_get:
                 with self.assertRaises(Exception):
-                    await api.retrieve("test-guard")
+                    await api.retrieve("g1")
 
         self.assertEqual(mock_get.call_count, 2)
 
@@ -423,7 +242,7 @@ class TestGuardsApiRetrieve(unittest.IsolatedAsyncioTestCase):
             new_callable=AsyncMock,
             return_value=guard_data_no_desc,
         ):
-            result = await api.retrieve("no-desc-guard")
+            result = await api.retrieve("g3")
 
         self.assertIsNone(result.description)
 
@@ -458,7 +277,7 @@ class TestGuardsApiValidate(unittest.IsolatedAsyncioTestCase):
             await api.validate("test-guard", "my content")
 
         call_kwargs = mock_post.call_args.kwargs
-        self.assertEqual(call_kwargs["body"]["llmOutput"], "my content")
+        self.assertEqual(call_kwargs["body"]["llm_output"], "my content")
 
     async def test_passes_guard_name_to_post(self):
         api = make_guards_api()
@@ -471,7 +290,7 @@ class TestGuardsApiValidate(unittest.IsolatedAsyncioTestCase):
             await api.validate("specific-guard", "content")
 
         call_kwargs = mock_post.call_args.kwargs
-        self.assertEqual(call_kwargs["name"], "specific-guard")
+        self.assertEqual(call_kwargs["id"], "specific-guard")
 
     async def test_passes_http_client_to_post(self):
         http_client = make_http_client()
@@ -605,7 +424,7 @@ class TestGuardsApiValidate(unittest.IsolatedAsyncioTestCase):
             await api.validate("test-guard", "just content")
 
         call_kwargs = mock_post.call_args.kwargs
-        self.assertEqual(call_kwargs["body"], {"llmOutput": "just content"})
+        self.assertEqual(call_kwargs["body"], {"llm_output": "just content"})
 
     async def test_validation_outcome_with_error_field(self):
         api = make_guards_api()
@@ -628,6 +447,341 @@ class TestGuardsApiValidate(unittest.IsolatedAsyncioTestCase):
 
         self.assertEqual(result.error, "Unexpected error during validation")
         self.assertFalse(result.validation_passed)
+
+
+# ---------------------------------------------------------------------------
+# GuardsApi — create
+# ---------------------------------------------------------------------------
+
+
+class TestGuardsApiCreate(unittest.IsolatedAsyncioTestCase):
+    async def test_returns_guard_on_success(self):
+        api = make_guards_api()
+        request = CreateGuardRequest(name="new-guard")
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.post_guard",
+            new_callable=AsyncMock,
+            return_value=GUARD_DATA,
+        ):
+            result = await api.create(request)
+
+        self.assertIsInstance(result, Guard)
+        self.assertEqual(result.id, "g1")
+        self.assertEqual(result.name, "test-guard")
+
+    async def test_passes_serialized_body_to_post_guard(self):
+        api = make_guards_api()
+        request = CreateGuardRequest(name="my-guard", description="desc")
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.post_guard",
+            new_callable=AsyncMock,
+            return_value=GUARD_DATA,
+        ) as mock_post:
+            await api.create(request)
+
+        call_kwargs = mock_post.call_args.kwargs
+        self.assertEqual(call_kwargs["body"]["name"], "my-guard")
+        self.assertEqual(call_kwargs["body"]["description"], "desc")
+
+    async def test_passes_http_client_to_post_guard(self):
+        http_client = make_http_client()
+        api = GuardsApi(http_client=http_client, headers={}, max_retries=1)
+        request = CreateGuardRequest(name="my-guard")
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.post_guard",
+            new_callable=AsyncMock,
+            return_value=GUARD_DATA,
+        ) as mock_post:
+            await api.create(request)
+
+        self.assertIs(mock_post.call_args.kwargs["client"], http_client)
+
+    async def test_retries_and_succeeds_on_transient_failure(self):
+        api = GuardsApi(http_client=make_http_client(), headers={}, max_retries=3)
+        request = CreateGuardRequest(name="my-guard")
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.wait_exponential",
+            return_value=__import__("tenacity").wait_none(),
+        ):
+            with patch(
+                "guardrails_ai.sdk.guards_api.post_guard",
+                new_callable=AsyncMock,
+                side_effect=[Exception("transient"), GUARD_DATA],
+            ) as mock_post:
+                result = await api.create(request)
+
+        self.assertEqual(mock_post.call_count, 2)
+        self.assertIsInstance(result, Guard)
+
+    async def test_raises_after_max_retries_exhausted(self):
+        api = GuardsApi(http_client=make_http_client(), headers={}, max_retries=2)
+        request = CreateGuardRequest(name="my-guard")
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.wait_exponential",
+            return_value=__import__("tenacity").wait_none(),
+        ):
+            with patch(
+                "guardrails_ai.sdk.guards_api.post_guard",
+                new_callable=AsyncMock,
+                side_effect=Exception("always fails"),
+            ) as mock_post:
+                with self.assertRaises(Exception):
+                    await api.create(request)
+
+        self.assertEqual(mock_post.call_count, 2)
+
+
+# ---------------------------------------------------------------------------
+# GuardsApi — list
+# ---------------------------------------------------------------------------
+
+
+class TestGuardsApiList(unittest.IsolatedAsyncioTestCase):
+    async def test_returns_list_of_guards_on_success(self):
+        api = make_guards_api()
+        guards_data = [GUARD_DATA, {**GUARD_DATA, "id": "g2", "name": "other-guard"}]
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.get_guards",
+            new_callable=AsyncMock,
+            return_value=guards_data,
+        ):
+            result = await api.list()
+
+        self.assertIsInstance(result, list)
+        self.assertEqual(len(result), 2)
+        self.assertIsInstance(result[0], Guard)
+        self.assertEqual(result[0].id, "g1")
+
+    async def test_returns_empty_list_when_no_guards(self):
+        api = make_guards_api()
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.get_guards",
+            new_callable=AsyncMock,
+            return_value=[],
+        ):
+            result = await api.list()
+
+        self.assertEqual(result, [])
+
+    async def test_passes_none_name_by_default(self):
+        api = make_guards_api()
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.get_guards",
+            new_callable=AsyncMock,
+            return_value=[],
+        ) as mock_get:
+            await api.list()
+
+        self.assertIsNone(mock_get.call_args.kwargs["name"])
+
+    async def test_passes_name_filter_when_provided(self):
+        api = make_guards_api()
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.get_guards",
+            new_callable=AsyncMock,
+            return_value=[GUARD_DATA],
+        ) as mock_get:
+            await api.list(name="test-guard")
+
+        self.assertEqual(mock_get.call_args.kwargs["name"], "test-guard")
+
+    async def test_passes_http_client_to_get_guards(self):
+        http_client = make_http_client()
+        api = GuardsApi(http_client=http_client, headers={}, max_retries=1)
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.get_guards",
+            new_callable=AsyncMock,
+            return_value=[],
+        ) as mock_get:
+            await api.list()
+
+        self.assertIs(mock_get.call_args.kwargs["client"], http_client)
+
+    async def test_retries_and_succeeds_on_transient_failure(self):
+        api = GuardsApi(http_client=make_http_client(), headers={}, max_retries=3)
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.wait_exponential",
+            return_value=__import__("tenacity").wait_none(),
+        ):
+            with patch(
+                "guardrails_ai.sdk.guards_api.get_guards",
+                new_callable=AsyncMock,
+                side_effect=[Exception("transient"), [GUARD_DATA]],
+            ) as mock_get:
+                result = await api.list()
+
+        self.assertEqual(mock_get.call_count, 2)
+        self.assertEqual(len(result), 1)
+
+
+# ---------------------------------------------------------------------------
+# GuardsApi — update
+# ---------------------------------------------------------------------------
+
+
+class TestGuardsApiUpdate(unittest.IsolatedAsyncioTestCase):
+    async def test_returns_guard_on_success(self):
+        api = make_guards_api()
+        guard = Guard(**GUARD_DATA)
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.put_guard",
+            new_callable=AsyncMock,
+            return_value={**GUARD_DATA, "name": "updated-guard"},
+        ):
+            result = await api.update(guard)
+
+        self.assertIsInstance(result, Guard)
+        self.assertEqual(result.name, "updated-guard")
+
+    async def test_passes_guard_id_to_put_guard(self):
+        api = make_guards_api()
+        guard = Guard(**GUARD_DATA)
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.put_guard",
+            new_callable=AsyncMock,
+            return_value=GUARD_DATA,
+        ) as mock_put:
+            await api.update(guard)
+
+        self.assertEqual(mock_put.call_args.kwargs["id"], "g1")
+
+    async def test_passes_serialized_guard_as_body(self):
+        api = make_guards_api()
+        guard = Guard(**GUARD_DATA)
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.put_guard",
+            new_callable=AsyncMock,
+            return_value=GUARD_DATA,
+        ) as mock_put:
+            await api.update(guard)
+
+        body = mock_put.call_args.kwargs["body"]
+        self.assertEqual(body["name"], "test-guard")
+
+    async def test_passes_http_client_to_put_guard(self):
+        http_client = make_http_client()
+        api = GuardsApi(http_client=http_client, headers={}, max_retries=1)
+        guard = Guard(**GUARD_DATA)
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.put_guard",
+            new_callable=AsyncMock,
+            return_value=GUARD_DATA,
+        ) as mock_put:
+            await api.update(guard)
+
+        self.assertIs(mock_put.call_args.kwargs["client"], http_client)
+
+    async def test_retries_and_succeeds_on_transient_failure(self):
+        api = GuardsApi(http_client=make_http_client(), headers={}, max_retries=3)
+        guard = Guard(**GUARD_DATA)
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.wait_exponential",
+            return_value=__import__("tenacity").wait_none(),
+        ):
+            with patch(
+                "guardrails_ai.sdk.guards_api.put_guard",
+                new_callable=AsyncMock,
+                side_effect=[Exception("transient"), GUARD_DATA],
+            ) as mock_put:
+                result = await api.update(guard)
+
+        self.assertEqual(mock_put.call_count, 2)
+        self.assertIsInstance(result, Guard)
+
+
+# ---------------------------------------------------------------------------
+# GuardsApi — delete
+# ---------------------------------------------------------------------------
+
+
+class TestGuardsApiDelete(unittest.IsolatedAsyncioTestCase):
+    async def test_returns_guard_on_success(self):
+        api = make_guards_api()
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.delete_guard",
+            new_callable=AsyncMock,
+            return_value=GUARD_DATA,
+        ):
+            result = await api.delete("g1")
+
+        self.assertIsInstance(result, Guard)
+        self.assertEqual(result.id, "g1")
+
+    async def test_passes_id_to_delete_guard(self):
+        api = make_guards_api()
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.delete_guard",
+            new_callable=AsyncMock,
+            return_value=GUARD_DATA,
+        ) as mock_del:
+            await api.delete("g1")
+
+        self.assertEqual(mock_del.call_args.kwargs["id"], "g1")
+
+    async def test_passes_http_client_to_delete_guard(self):
+        http_client = make_http_client()
+        api = GuardsApi(http_client=http_client, headers={}, max_retries=1)
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.delete_guard",
+            new_callable=AsyncMock,
+            return_value=GUARD_DATA,
+        ) as mock_del:
+            await api.delete("g1")
+
+        self.assertIs(mock_del.call_args.kwargs["client"], http_client)
+
+    async def test_retries_and_succeeds_on_transient_failure(self):
+        api = GuardsApi(http_client=make_http_client(), headers={}, max_retries=3)
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.wait_exponential",
+            return_value=__import__("tenacity").wait_none(),
+        ):
+            with patch(
+                "guardrails_ai.sdk.guards_api.delete_guard",
+                new_callable=AsyncMock,
+                side_effect=[Exception("transient"), GUARD_DATA],
+            ) as mock_del:
+                result = await api.delete("g1")
+
+        self.assertEqual(mock_del.call_count, 2)
+        self.assertIsInstance(result, Guard)
+
+    async def test_raises_after_max_retries_exhausted(self):
+        api = GuardsApi(http_client=make_http_client(), headers={}, max_retries=2)
+
+        with patch(
+            "guardrails_ai.sdk.guards_api.wait_exponential",
+            return_value=__import__("tenacity").wait_none(),
+        ):
+            with patch(
+                "guardrails_ai.sdk.guards_api.delete_guard",
+                new_callable=AsyncMock,
+                side_effect=Exception("always fails"),
+            ) as mock_del:
+                with self.assertRaises(Exception):
+                    await api.delete("g1")
+
+        self.assertEqual(mock_del.call_count, 2)
 
 
 # ---------------------------------------------------------------------------

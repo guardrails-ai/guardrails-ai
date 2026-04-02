@@ -1,22 +1,18 @@
 
 [project]
-name = "guardrails-ai-sdk"
+name = "guardrails-ai-types"
 version = "0.4.0"
 authors = [
     {name = "Guardrails AI", email = "contact@guardrailsai.com"}
 ]
 license = {file = "LICENSE"}
 
-description = "Offical Guardrails AI SDK"
+description = "Offical Guardrails AI Types"
 readme = "README.md"
-requires-python = ">= 3.12,<4"
+requires-python = ">= 3.10,<4"
 
 dependencies = [
-  "httpx>=0.27.0",
-  "pydantic>=2.0.0,<3.0.0",
-  "tenacity>=9.0.0",
-  "openai>=1",
-  "guardrails-ai-types>=0.4.0a6"
+  "pydantic>=2.0.0,<3.0.0"
 ]
 
 [project.optional-dependencies]
@@ -33,8 +29,8 @@ build-backend = "setuptools.build_meta"
 
 [project.urls]
 Homepage = "https://guardrailsai.com"
-Documentation = "https://guardrails-ai.github.io/guardrails-ai/autoapi/guardrails_ai/sdk/index.html"
-Repository = "https://github.com/guardrails-ai/guardrails-ai/tree/main/sdk/py"
+Documentation = "https://guardrails-ai.github.io/guardrails-ai/autoapi/guardrails_ai/types/index.html"
+Repository = "https://github.com/guardrails-ai/guardrails-ai/tree/main/types/py"
 
 
 [tool.ruff]
