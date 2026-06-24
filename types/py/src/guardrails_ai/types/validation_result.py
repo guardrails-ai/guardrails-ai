@@ -1,6 +1,6 @@
 from enum import Enum
 from typing import Any, Dict, Optional
-from pydantic import Field, BaseModel
+from pydantic import AliasChoices, Field, BaseModel
 
 
 class Outcome(str, Enum):
@@ -22,7 +22,8 @@ class ValidationResult(BaseModel):
     )
     validated_chunk: Optional[Any] = Field(
         default=None,
-        alias="validatedChunk",
+        validation_alias=AliasChoices("validated_chunk", "validatedChunk"),
+        serialization_alias="validatedChunk",
         description="The value argument passed to validator.validate or validator.validate_stream.",
     )
 
