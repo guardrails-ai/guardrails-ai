@@ -1,5 +1,5 @@
 from __future__ import annotations
-from pydantic import Field, field_validator
+from pydantic import AliasChoices, Field, field_validator
 from typing import Any, List, Literal, Optional
 from guardrails_ai.types.error_span import ErrorSpan
 from guardrails_ai.types.validation_result import ValidationResult, Outcome
@@ -9,11 +9,19 @@ class FailResult(ValidationResult):
     """The output of a validator when validation fails."""
 
     outcome: Outcome = Outcome.FAIL
-    error_message: str = Field(alias="errorMessage")
-    fix_value: Optional[Any] = Field(default=None, alias="fixValue")
+    error_message: str = Field(
+        validation_alias=AliasChoices("error_message", "errorMessage"),
+        serialization_alias="errorMessage",
+    )
+    fix_value: Optional[Any] = Field(
+        default=None,
+        validation_alias=AliasChoices("fix_value", "fixValue"),
+        serialization_alias="fixValue",
+    )
     error_spans: Optional[List[ErrorSpan]] = Field(
         default=None,
-        alias="errorSpans",
+        validation_alias=AliasChoices("error_spans", "errorSpans"),
+        serialization_alias="errorSpans",
         description="Segments that caused validation to fail. May not exist for non-streamed output.",
     )
 
